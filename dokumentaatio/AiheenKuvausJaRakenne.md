@@ -10,4 +10,4 @@ Toiminnot: Liikutella palikoita nuolilla ja tauottaa pelinkulku sekä mahdolline
 
 Luokkakaavio: 
 
-![Alt text](C:\Users\omistaja\MilinTetris\dokumentaatio\Luokkakaavio.png "Alustava luokkakaavio")
+![Kaavio](C:\Users\omistaja\MilinTetris\dokumentaatio\Luokkakaavio.png)
