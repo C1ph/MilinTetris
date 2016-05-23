@@ -5,6 +5,8 @@
  */
 package tetrispeli.logiikka;
 
+import tetrispeli.logiikka.Suunta;
+import static javafx.scene.input.KeyCode.Z;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,11 +20,16 @@ import static org.junit.Assert.*;
  */
 public class PalikkaTest {
     
+    private Palikka palikka;
+    private Ruudukko ruudukko;
+    
     public PalikkaTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+        Palikka palikka = new Palikka(0, 0);
+        Ruudukko ruudukko = new Ruudukko(8, 10);
     }
     
     @AfterClass
@@ -37,9 +44,14 @@ public class PalikkaTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void palikanMuotoAsetetaanOikein (){
+        palikka = new Palikka(0,0);
+        boolean[][] expected = {
+            { false, true, false },
+            { false, true , false },
+            { true, true, false }
+        };
+        assertArrayEquals(expected, palikka.getRuudukko());
+    }
 }

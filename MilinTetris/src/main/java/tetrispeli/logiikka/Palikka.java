@@ -129,5 +129,4 @@ public class Palikka {
         Z[3][2] = 2;
         return Z;
     }
-
 }
