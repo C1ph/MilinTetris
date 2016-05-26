@@ -15,12 +15,12 @@ public class Palikka {
 
     private int x;
     private int y;
-    private boolean ruudukko[][];
+    public boolean ruudukko[][];
     private int[][] palikat;
 
     public Palikka(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.x = 0;
+        this.y = 0;
         this.ruudukko = ruudukko;
         this.palikat = arvoPalikka();
     }
@@ -64,6 +64,49 @@ public class Palikka {
             y += 1;
         } else if (suunta == Suunta.VASEN) {
             x -= 1;
+        }
+    }
+
+    public void poistaRivi(int rivi) {
+        if (rivi > (y + ruudukko.length - 1)) {
+            y = y + 1;
+        } else {
+            pudotaRivi(rivi - y);
+        }
+    }
+
+    public boolean onkoPalikassaPaloja() {
+        int rivi = 0;
+        int sarake = 0;
+        while (rivi < ruudukko.length) {
+            rivi++;
+            while (sarake < ruudukko.length) {
+                sarake++;
+            }
+            if (ruudukko[rivi][sarake]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void setRuudukko(boolean[][] ruudukko) {
+        this.ruudukko = ruudukko;
+    }
+
+    private void pudotaRivi(int riviruudukossa) {
+        int i = riviruudukossa - 1;
+        while (i >= 0) {
+            i--;
+            int j = 0;
+            while (j < ruudukko.length) {
+                j++;
+                ruudukko[i + 1][j] = ruudukko[i][j];
+            }
+        }
+        while (i < ruudukko.length) {
+            i++;
+            ruudukko[0][i] = false;
         }
     }
 
@@ -128,5 +171,18 @@ public class Palikka {
         Z[2][2] = 2;
         Z[3][2] = 2;
         return Z;
+    }
+
+    public boolean onkoTyhja() {
+        int rivi = 0;
+        while (rivi < ruudukko.length) {
+        rivi++;
+            for (int sarake = 0; sarake < ruudukko.length; sarake++) {
+                if (ruudukko[rivi][sarake]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

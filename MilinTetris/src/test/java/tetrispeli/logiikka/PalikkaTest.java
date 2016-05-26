@@ -5,6 +5,8 @@
  */
 package tetrispeli.logiikka;
 
+import tetrispeli.logiikka.Palikka;
+import tetrispeli.logiikka.Ruudukko;
 import tetrispeli.logiikka.Suunta;
 import static javafx.scene.input.KeyCode.Z;
 import org.junit.After;
@@ -13,45 +15,69 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import tetrispeli.logiikka.Palikat.JPalikka;
 
 /**
  *
- * @author omistaja
+ * @author annettek
  */
 public class PalikkaTest {
-    
-    private Palikka palikka;
-    private Ruudukko ruudukko;
-    
+
+    Palikka palikka;
+    Ruudukko ruudukko;
+
     public PalikkaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
-        Palikka palikka = new Palikka(0, 0);
-        Ruudukko ruudukko = new Ruudukko(8, 10);
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        Palikka palikka = new Palikka(0, 0);
+        Ruudukko ruudukko = new Ruudukko(10, 12);
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @Test
-    public void palikanMuotoAsetetaanOikein (){
-        palikka = new Palikka(0,0);
-        boolean[][] expected = {
-            { false, true, false },
-            { false, true , false },
-            { true, true, false }
+    public void palikkaOnOikeanMuotoinen() {
+        palikka = new JPalikka(0, 0);
+        boolean[][] uusi = {
+            {false, true, false},
+            {false, true, false},
+            {true, true, false}
         };
-        assertArrayEquals(expected, palikka.getRuudukko());
+        assertArrayEquals(uusi, palikka.getRuudukko());
     }
+
+    @Test
+    public void onkoTyhjaToimiiJosPalikkaEiOleTyhja() {
+        palikka = new JPalikka(0, 0);
+        assertFalse(palikka.onkoTyhja());
+    }
+
+    @Test
+    public void palikanSiirtoOnnistuu() {
+        palikka = new JPalikka(0, 0);
+        palikka.siirra(Suunta.OIKEA);
+        assertEquals(1, palikka.getX());
+        palikka.siirra(Suunta.ALAS);
+        assertEquals(1, palikka.getY());
+    }
+
+    @Test
+    public void arvontaToimii() {
+        palikka = new JPalikka(0, 0);
+        int[][] numero = palikka.arvoPalikka();
+    }
+    
+
 }
