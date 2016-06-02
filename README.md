@@ -8,6 +8,4 @@ Harjoitustyön aiheena on yksinkertaisella logiikalla toimiva tetris-peli, jossa
 
 [Checkstyle](dokumentaatio/Checkstyle-raportit/checkstyle.html)
 
-Pelin toteutus relaatiokaaviona:
-
-[!Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/Uusi_luokkakaavio.png)
+![Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/Uusi_luokkakaavio.png)
