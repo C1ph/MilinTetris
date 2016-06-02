@@ -14,13 +14,17 @@ public class Ruudukko {
     private boolean[][] ruudukko;
     private int leveys;
     private int korkeus;
+    private int x;
+    private int y;
 
     public Ruudukko(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.ruudukko = new boolean[korkeus][leveys];
+        this.x = x;
+        this.y = y;
     }
-    
+
     public int getKorkeus() {
         return korkeus;
     }
@@ -28,9 +32,13 @@ public class Ruudukko {
     public int getLeveys() {
         return leveys;
     }
-    
+
     public boolean[][] getRuudukko() {
         return ruudukko;
+    }
+
+    public void setRuudukko(boolean[][] ruudukko) {
+        this.ruudukko = ruudukko;
     }
 
     public void tyhjennaRuudukko() {
@@ -94,5 +102,56 @@ public class Ruudukko {
         }
         return true;
     }
-    
+
+    public boolean onkoTyhja() {
+        int rivi = 0;
+        while (rivi < ruudukko.length) {
+            rivi++;
+            for (int sarake = 0; sarake < ruudukko.length; sarake++) {
+                if (ruudukko[rivi][sarake]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void pudotaRivi(int riviruudukossa) {
+        int i = riviruudukossa - 1;
+        while (i >= 0) {
+            i--;
+            int j = 0;
+            while (j < ruudukko.length) {
+                j++;
+                ruudukko[i + 1][j] = ruudukko[i][j];
+            }
+        }
+        while (i < ruudukko.length) {
+            i++;
+            ruudukko[0][i] = false;
+        }
+    }
+
+    public boolean onkoPalikassaPaloja() {
+        int rivi = 0;
+        int sarake = 0;
+        while (rivi < ruudukko.length) {
+            rivi++;
+            while (sarake < ruudukko.length) {
+                sarake++;
+            }
+            if (ruudukko[rivi][sarake]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void poistaRivi(int rivi) {
+        if (rivi > (y + ruudukko.length - 1)) {
+            y += 1;
+        } else {
+            pudotaRivi(rivi - y);
+        }
+    }
 }

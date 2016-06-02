@@ -9,3 +9,7 @@
 | 22.5.2016 | 2 h | Ruudukon toiminnallisuutta sekä testien suunnittelua ja alustusta |
 | 23.5.2016 | 2 h | Alustava luokkakaavio valmiiksi ja ekan pit- sekä checkstyle-raportin generointi |
 | 26.5.2016 | 2 h | Lisää toiminnallisuutta kuten korjauksia suuntaan ja palikoihin, lisää testejä |
+| 28.5.2016 | 2 h | Käyttöliittymän aloitus |
+| 30.5.2016 | 2 h | Luokkakaavion päivitys relaatiokaavioksi, logiikan pienempiin osiin jakamista (palikanarpojan ja osa-luokan luonti) |
+| 01.6.2016 | 1 h | Koodikatselmoinnin teko ja projektitestaus |
+| 02.6.2016 | 2 h | Päivitykset kuntoon, uusi pit ja checkstyle |

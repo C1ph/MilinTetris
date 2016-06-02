@@ -5,35 +5,44 @@
  */
 package tetrispeli.logiikka;
 
-import java.util.Random;
+import java.awt.Color;
+import tetrispeli.logiikka.Palikka;
+import tetrispeli.logiikka.Ruudukko;
 
 /**
  *
  * @author annettek
  */
-public abstract class Palikka {
+public class Osa {
 
-    public Osa[] osat;
-    public boolean[][] ruudukko;
+    private int x;
+    private int y;
+    public boolean ruudukko[][];
 
-    public Palikka(int x, int y) {
-        this.osat = osat;
-        this.ruudukko = ruudukko;
+    public Osa(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     public void siirra(Suunta suunta) {
-        for (Osa o : osat) {
-            o.siirra(suunta);
+        if (suunta == Suunta.OIKEA) {
+            x += 1;
+        } else if (suunta == Suunta.ALAS) {
+            y += 1;
+        } else if (suunta == Suunta.VASEN) {
+            x -= 1;
         }
     }
-    
-    public boolean[][] getRuudukko() {
-        return ruudukko;
-    }
-    // globaalit ja lokaalit paras tapa!
-    // matriisikertolasku-taulukon teko
-    
-    public boolean[][] kierraOikealle() {
+
+    public boolean[][] kaanna() {
         boolean[][] uusi = new boolean[ruudukko.length][ruudukko.length];
         int i = 0;
         int j = ruudukko.length - 1;

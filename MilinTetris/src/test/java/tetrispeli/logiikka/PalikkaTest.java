@@ -6,7 +6,6 @@
 package tetrispeli.logiikka;
 
 import tetrispeli.logiikka.Palikka;
-import tetrispeli.logiikka.Ruudukko;
 import tetrispeli.logiikka.Suunta;
 import static javafx.scene.input.KeyCode.Z;
 import org.junit.After;
@@ -16,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tetrispeli.logiikka.Palikat.JPalikka;
+import tetrispeli.logiikka.PalikkaArpoja;
 
 /**
  *
@@ -39,7 +39,7 @@ public class PalikkaTest {
 
     @Before
     public void setUp() {
-        Palikka palikka = new Palikka(0, 0);
+        Palikka palikka = new Palikka(0, 0) {};
         Ruudukko ruudukko = new Ruudukko(10, 12);
     }
 
@@ -49,35 +49,34 @@ public class PalikkaTest {
 
     @Test
     public void palikkaOnOikeanMuotoinen() {
-        palikka = new JPalikka(0, 0);
+        Palikka r = new JPalikka(3, 3);
         boolean[][] uusi = {
             {false, true, false},
             {false, true, false},
             {true, true, false}
         };
-        assertArrayEquals(uusi, palikka.getRuudukko());
+        assertArrayEquals(uusi, r.getRuudukko());
     }
 
     @Test
-    public void onkoTyhjaToimiiJosPalikkaEiOleTyhja() {
-        palikka = new JPalikka(0, 0);
-        assertFalse(palikka.onkoTyhja());
-    }
-
-    @Test
-    public void palikanSiirtoOnnistuu() {
-        palikka = new JPalikka(0, 0);
-        palikka.siirra(Suunta.OIKEA);
-        assertEquals(1, palikka.getX());
-        palikka.siirra(Suunta.ALAS);
-        assertEquals(1, palikka.getY());
+    public void onkoTyhjaToimiiJosRuudukkoEiOleTyhja() {
+        Ruudukko r = new Ruudukko(0, 0);
+        assertEquals(true, r.onkoTyhja());
     }
 
     @Test
     public void arvontaToimii() {
-        palikka = new JPalikka(0, 0);
-        int[][] numero = palikka.arvoPalikka();
+        PalikkaArpoja arpoja = new PalikkaArpoja(0, 0);
+        int[][] numero = arpoja.arvoPalikka();
     }
     
+    @Test
+    public void palikanSiirtoOnnistuu() {
+        Osa o = new Osa(1, 1);
+        o.siirra(Suunta.OIKEA);
+        assertEquals(2, o.getX());
+        o.siirra(Suunta.ALAS);
+        assertEquals(2, o.getY());
+    }
 
 }

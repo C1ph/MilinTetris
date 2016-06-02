@@ -7,7 +7,6 @@ package tetrispeli.logiikka;
 
 import java.util.ArrayList;
 import tetrispeli.logiikka.Palikka;
-import tetrispeli.logiikka.Ruudukko;
 import tetrispeli.logiikka.Suunta;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -25,6 +24,7 @@ public class RuudukkoTest {
 
     Ruudukko ruudukko;
     Palikka palikka;
+    Osa osa;
 
     public RuudukkoTest() {
     }
@@ -40,7 +40,7 @@ public class RuudukkoTest {
     @Before
     public void setUp() {
         ruudukko = new Ruudukko(0, 0);
-        palikka = new Palikka(0, 0);
+        osa = new Osa(0, 0);
     }
 
     @After
@@ -77,8 +77,13 @@ public class RuudukkoTest {
     @Test
     public void tyhjennaMetodiToimii(){
         ArrayList<Palikka> palikat = new ArrayList<>();
-        palikat.add(new Neliopalikka(0,4));
+        palikat.add(new Neliopalikka(0,0));
         ruudukko.tyhjennaRuudukko();
+        assertEquals(-1, ruudukko.palautaRivi());
+    }
+    
+    @Test
+    public void riviPalautetaanOikein(){
         assertEquals(-1, ruudukko.palautaRivi());
     }
 }
