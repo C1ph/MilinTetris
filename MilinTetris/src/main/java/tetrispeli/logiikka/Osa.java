@@ -52,9 +52,9 @@ public class Osa {
             a++;
             i++;
             while (b < ruudukko.length) {
-            j--;
-            b++;
-            uusi[a][b] = ruudukko[j][i];
+                j--;
+                b++;
+                uusi[a][b] = ruudukko[j][i];
             }
         }
         return uusi;

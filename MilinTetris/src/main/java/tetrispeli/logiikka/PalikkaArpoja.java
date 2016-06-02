@@ -79,8 +79,8 @@ public class PalikkaArpoja extends Palikka {
         Z[3][2] = 2;
         return Z;
     }
-    
-     public int[][] arvoPalikka() {
+
+    public int[][] arvoPalikka() {
         Random palikka = new Random();
         int x = palikka.nextInt(6);
         if (x == 0) {

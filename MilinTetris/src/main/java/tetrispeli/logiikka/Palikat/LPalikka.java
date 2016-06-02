@@ -13,13 +13,13 @@ import tetrispeli.logiikka.Palikka;
  */
 public class LPalikka extends Palikka {
 
-    public LPalikka (int x, int y) {
+    public LPalikka(int x, int y) {
         super(x, y);
         boolean[][] uusi = {
-            { false, true, false },
-            { false, true , false },
-            { false, true, true }
+            {false, true, false},
+            {false, true, false},
+            {false, true, true}
         };
         super.ruudukko = uusi;
-    }   
+    }
 }

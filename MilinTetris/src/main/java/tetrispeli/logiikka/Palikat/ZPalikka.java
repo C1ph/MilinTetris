@@ -12,13 +12,13 @@ import tetrispeli.logiikka.Palikka;
  * @author annettek
  */
 public class ZPalikka extends Palikka {
-    
-    public ZPalikka (int x, int y) {
+
+    public ZPalikka(int x, int y) {
         super(x, y);
         boolean[][] uusiRuudukko = {
-            { false, true, false },
-            { true, true , true },
-            { false, false, false }
+            {false, true, false},
+            {true, true, true},
+            {false, false, false}
         };
         super.ruudukko = uusiRuudukko;
     }

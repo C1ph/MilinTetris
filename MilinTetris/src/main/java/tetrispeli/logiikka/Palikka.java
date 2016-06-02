@@ -26,13 +26,13 @@ public abstract class Palikka {
             o.siirra(suunta);
         }
     }
-    
+
     public boolean[][] getRuudukko() {
         return ruudukko;
     }
     // globaalit ja lokaalit paras tapa!
     // matriisikertolasku-taulukon teko
-    
+
     public boolean[][] kierraOikealle() {
         boolean[][] uusi = new boolean[ruudukko.length][ruudukko.length];
         int i = 0;
@@ -43,9 +43,9 @@ public abstract class Palikka {
             a++;
             i++;
             while (b < ruudukko.length) {
-            j--;
-            b++;
-            uusi[a][b] = ruudukko[j][i];
+                j--;
+                b++;
+                uusi[a][b] = ruudukko[j][i];
             }
         }
         return uusi;
