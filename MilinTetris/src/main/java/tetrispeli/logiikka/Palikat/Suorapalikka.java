@@ -11,6 +11,9 @@ import tetrispeli.logiikka.Palikka;
  *
  * @author annettek
  */
+/**
+ * Luokka luo suoran palikan.
+ */
 public class Suorapalikka extends Palikka {
 
     public Suorapalikka(int x, int y) {

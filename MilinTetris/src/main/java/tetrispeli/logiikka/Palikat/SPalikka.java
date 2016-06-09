@@ -11,6 +11,9 @@ import tetrispeli.logiikka.Palikka;
  *
  * @author annettek
  */
+/**
+ * Luokka luo S-muotoisen palikan.
+ */
 public class SPalikka extends Palikka {
 
     public SPalikka(int x, int y) {

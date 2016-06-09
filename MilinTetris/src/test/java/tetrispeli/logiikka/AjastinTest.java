@@ -11,40 +11,47 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tetrispeli.logiikka.Palikat.TPalikka;
+import tetrispeli.kayttoliittyma.Ohjaaja;
 
 /**
  *
  * @author annettek
  */
-public class PalikkaArpojaTest {
-
-    PalikkaArpoja arpoja;
-
-    public PalikkaArpojaTest() {
+public class AjastinTest {
+    
+    Ohjaaja ohjaaja;
+    Ajastin ajastin;
+    
+    public AjastinTest() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Before
     public void setUp() {
-        PalikkaArpoja arpoja = new PalikkaArpoja(0, 0);
+        ohjaaja = new Ohjaaja(10,10);
+        ajastin = new Ajastin(ohjaaja) {};
     }
-
+    
     @After
     public void tearDown() {
     }
 
     @Test
-    public void TPalikanArvontaOikein() {
-        TPalikka t = new TPalikka(0, 0);
-        int[][] arvottu = arpoja.arvoPalikka();
-        assertEquals(t, arvottu);
+    public void ajastinAsettaaViiveenOikein(){
+        ajastin.paivita();
+        assertEquals(1000, ajastin.getDelay());
+        
+    }
+    
+    @Test
+    public void AjastinOnAluksiNolla(){
+        assertEquals(ajastin.toString(), "00:00:00");
     }
 }

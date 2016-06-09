@@ -57,7 +57,7 @@ public class PalikkaTest {
         };
         assertArrayEquals(uusi, r.getRuudukko());
     }
-
+    
     @Test
     public void onkoTyhjaToimiiJosRuudukkoEiOleTyhja() {
         Ruudukko r = new Ruudukko(0, 0);
@@ -78,5 +78,4 @@ public class PalikkaTest {
         o.siirra(Suunta.ALAS);
         assertEquals(2, o.getY());
     }
-
 }

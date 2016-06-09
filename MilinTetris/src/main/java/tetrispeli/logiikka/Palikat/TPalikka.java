@@ -11,6 +11,9 @@ import tetrispeli.logiikka.Palikka;
  *
  * @author annettek
  */
+/**
+ * Luokka luo T-muotoisen palikan.
+ */
 public class TPalikka extends Palikka {
 
     public TPalikka(int x, int y) {

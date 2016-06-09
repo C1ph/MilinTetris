@@ -13,6 +13,9 @@ import tetrispeli.logiikka.Ruudukko;
  *
  * @author annettek
  */
+/**
+ * Luokka luo osan, joista palikka koostuu.
+ */
 public class Osa {
 
     private int x;

@@ -11,6 +11,9 @@ import tetrispeli.logiikka.Palikka;
  *
  * @author annettek
  */
+/**
+ * Luokka luo Z-muotoisen palikan.
+ */
 public class ZPalikka extends Palikka {
 
     public ZPalikka(int x, int y) {

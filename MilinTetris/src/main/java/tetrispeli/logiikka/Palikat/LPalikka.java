@@ -11,6 +11,9 @@ import tetrispeli.logiikka.Palikka;
  *
  * @author annettek
  */
+/**
+ * Luokka luo L-muotoisen palikan.
+ */
 public class LPalikka extends Palikka {
 
     public LPalikka(int x, int y) {

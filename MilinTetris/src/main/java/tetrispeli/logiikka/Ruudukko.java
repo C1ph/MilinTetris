@@ -5,9 +5,14 @@
  */
 package tetrispeli.logiikka;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author annettek
+ */
+/**
+ * Luokka luo peliruudukon.
  */
 public class Ruudukko {
 
@@ -103,20 +108,7 @@ public class Ruudukko {
         return true;
     }
 
-    public boolean onkoTyhja() {
-        int rivi = 0;
-        while (rivi < ruudukko.length) {
-            rivi++;
-            for (int sarake = 0; sarake < ruudukko.length; sarake++) {
-                if (ruudukko[rivi][sarake]) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    private void pudotaRivi(int riviruudukossa) {
+    public void pudotaRivi(int riviruudukossa) {
         int i = riviruudukossa - 1;
         while (i >= 0) {
             i--;
@@ -146,12 +138,39 @@ public class Ruudukko {
         }
         return true;
     }
+    
+    public boolean onkoTyhja() {
+        int rivi = 0;
+        while (rivi < ruudukko.length) {
+            rivi++;
+            for (int sarake = 0; sarake < ruudukko.length; sarake++) {
+                if (ruudukko[rivi][sarake]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
-    public void poistaRivi(int rivi) {
-        if (rivi > (y + ruudukko.length - 1)) {
-            y += 1;
-        } else {
-            pudotaRivi(rivi - y);
+    public void paivitaPalikka(Palikka paivitettava) {
+        boolean[][] palikanRuudukko = paivitettava.getRuudukko();
+        int i = 0;
+        int j = 0;
+        while (i < palikanRuudukko.length) {
+            i++;
+            while (j < palikanRuudukko.length) {
+                j++;
+                if (palikanRuudukko[i][j] == true) {
+                    ruudukko[paivitettava.getY() + i][paivitettava.getX() + j] = true;
+                }
+
+            }
+        }
+    }
+    
+    public void paivitaListanPalikat(ArrayList<Palikka> palikat) {
+        for (Palikka palikka : palikat) {
+            paivitaPalikka(palikka);
         }
     }
 }

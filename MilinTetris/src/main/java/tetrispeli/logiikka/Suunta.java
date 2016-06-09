@@ -9,6 +9,9 @@ package tetrispeli.logiikka;
  *
  * @author annettek
  */
+/**
+ * Luokka luo ja määrää palikan suunnan.
+ */
 public enum Suunta {
 
     OIKEA(1), VASEN(-1), ALAS(1);

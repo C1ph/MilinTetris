@@ -86,4 +86,5 @@ public class RuudukkoTest {
     public void riviPalautetaanOikein(){
         assertEquals(-1, ruudukko.palautaRivi());
     }
+    
 }

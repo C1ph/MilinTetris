@@ -11,6 +11,9 @@ import java.util.Random;
  *
  * @author annettek
  */
+/**
+ * Luokka arpoo tietyn palikan laskeutuvaksi.
+ */
 public class PalikkaArpoja extends Palikka {
 
     public PalikkaArpoja(int x, int y) {

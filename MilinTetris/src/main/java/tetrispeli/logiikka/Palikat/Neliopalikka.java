@@ -11,6 +11,9 @@ import tetrispeli.logiikka.Palikka;
  *
  * @author annettek
  */
+/**
+ * Luokka luo neliön muotoisen palikan.
+ */
 public class Neliopalikka extends Palikka {
 
     public Neliopalikka(int x, int y) {

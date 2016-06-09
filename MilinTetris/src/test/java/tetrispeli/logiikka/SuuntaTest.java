@@ -40,4 +40,8 @@ public class SuuntaTest {
     public void tearDown() {
     }
 
+    @Test
+    public void siirtoToimii(){
+        assertEquals(siirto, siirto.getSiirto());
+    }
 }

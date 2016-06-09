@@ -3,25 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetrispeli.logiikka;
+package tetrispeli.kayttoliittyma;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tetrispeli.logiikka.Palikat.TPalikka;
 
 /**
  *
  * @author annettek
  */
-public class PalikkaArpojaTest {
+public class ButtonListenerTest {
 
-    PalikkaArpoja arpoja;
+    ButtonListener listener;
 
-    public PalikkaArpojaTest() {
+    public ButtonListenerTest() {
     }
 
     @BeforeClass
@@ -34,17 +35,9 @@ public class PalikkaArpojaTest {
 
     @Before
     public void setUp() {
-        PalikkaArpoja arpoja = new PalikkaArpoja(0, 0);
     }
 
     @After
     public void tearDown() {
-    }
-
-    @Test
-    public void TPalikanArvontaOikein() {
-        TPalikka t = new TPalikka(0, 0);
-        int[][] arvottu = arpoja.arvoPalikka();
-        assertEquals(t, arvottu);
     }
 }
