@@ -11,3 +11,11 @@ Toiminnot: Liikutella palikoita nuolilla ja tauottaa pelinkulku sekä mahdolline
 Luokkakaavio: 
 
 ![Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/Uusi_luokkakaavio.png)
+
+Sekvenssikaavio palikan kääntämiselle:
+
+![Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/Sekvenssikaavio1.png)
+
+Sekvenssikaavio palikan liikuttamiselle:
+
+![Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/Sekvenssikaavio2.png)
