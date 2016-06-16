@@ -28,8 +28,7 @@ public class Alusta extends JPanel implements Paivitys {
     private int koko;
     private Ohjaaja ohjaaja;
 
-    public Alusta(int koko, Ohjaaja ohjaaja) {
-        this.koko = koko;
+    public Alusta(Ohjaaja ohjaaja) {
         this.ohjaaja = ohjaaja;
         this.setLayout(new FlowLayout(FlowLayout.RIGHT));
     }
@@ -38,10 +37,11 @@ public class Alusta extends JPanel implements Paivitys {
      * Metodi piirtää palikan.
      *
      * @param piirrettava
+     * @param g
      *
      */
     public void piirraPalikka(Palikka piirrettava, Graphics g) {
-        boolean[][] ruudukko = piirrettava.getRuudukko();
+        boolean[][] ruudukko = piirrettava.getPalaTaulukko();
         int i = 0;
         int j = 0;
         while (i < ruudukko.length) {
@@ -74,7 +74,6 @@ public class Alusta extends JPanel implements Paivitys {
 
     @Override
     public void paivita() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.repaint();
     }
-
 }
