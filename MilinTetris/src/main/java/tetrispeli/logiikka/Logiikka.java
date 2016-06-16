@@ -18,6 +18,9 @@ import static tetrispeli.logiikka.Suunta.VASEN;
  */
 public class Logiikka {
 
+    private Logiikka logiikka;
+    private Ajastin ajastin;
+    private Alusta alusta;
     private Palikka palikka;
     private Ohjaaja ohjaaja;
     private PalikkaArpoja arpoja;
@@ -30,6 +33,9 @@ public class Logiikka {
         this.arpoja = new PalikkaArpoja(this.ruudukko.getLeveys());
         this.palikka = arpoja.arvoPalikka();
         this.osat = new ArrayList<>();
+        this.logiikka = new Logiikka(this);
+        this.alusta = new Alusta(this);
+        this.ajastin = new Ajastin(this);
     }
 
     public Palikka getPalikka() {
@@ -38,6 +44,18 @@ public class Logiikka {
 
     public void setPalikka(Palikka palikka) {
         this.palikka = palikka;
+    }
+    
+    public Ajastin getAjastin() {
+        return ajastin;
+    }
+
+    public Alusta getAlusta() {
+        return alusta;
+    }
+
+    public Logiikka getLogiikka() {
+        return logiikka;
     }
 
     public void siirraAlas() {
