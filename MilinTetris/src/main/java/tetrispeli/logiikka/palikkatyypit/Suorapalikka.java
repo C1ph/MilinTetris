@@ -18,12 +18,9 @@ public class Suorapalikka extends Palikka {
 
     public Suorapalikka(int x, int y) {
         super(x, y);
-        boolean[][] uusiRuudukko = {
-            {false, true, false, false},
-            {false, true, false, false},
-            {false, true, false, false},
-            {false, true, false, false}
-        };
-        super.ruudukko = uusiRuudukko;
+        super.getOsat().add(new Osa(0,0));
+        super.getOsat().add(new Osa(0,1));
+        super.getOsat().add(new Osa(0,2));
+        super.getOsat().add(new Osa(0,3));
     }
 }
