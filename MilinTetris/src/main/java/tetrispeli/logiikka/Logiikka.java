@@ -78,6 +78,10 @@ public class Logiikka {
         palikka.kierraOikealle();
     }
 
+    /**
+     * Metodi tarkistaa, osuuko palikka toisen palikan päälle. Jos osuu, siirretään yksi ylöspäin, 
+     * palikka liimataan paikalle ja liitetään se osaksi pohjapala-ArrayListiä. Jos ei, palikka liikkuu eteenpäin.
+     */
     public boolean meneekoPaalle(ArrayList<Osa> osat, Osa osa) {
         for (Osa o : osat) {
             if (o.getX() == osa.getX() && o.getY() == osa.getY()) {
@@ -87,6 +91,10 @@ public class Logiikka {
         return false;
     }
 
+    /**
+     * Metodi tarkistaa, onko se paikka tyhjä, johon palikka on menossa. Jos ei, siirretään yksi ylöspäin, 
+     * palikka liimataan paikalle ja liitetään se osaksi pohjapala-ArrayListiä. Jos on, palikka liikkuu eteenpäin.
+     */
     public boolean onkoTyhja() {
         int rivi = 0;
         while (rivi < ruudukko.getLeveys()) {
@@ -100,6 +108,9 @@ public class Logiikka {
         return true;
     }
 
+    /**
+     * Metodi tarkistaa, meneekö palikka seinän läpi. Jos menee, estetään kulku ja palikka jää alustan sisäpuolelle.
+     */
 //    public boolean meneekoSeinastaLapi(Suunta suunta, int leveys, int korkeus) {
 //        if (suunta == Suunta.ALAS) {
 //            return (this.y > (korkeus - 2));
@@ -113,9 +124,7 @@ public class Logiikka {
 //    }
 
     /**
-     * Metodi tarkistaa, osuuko palikka pohjaan, ja jos osuu, lisaa palikan
-     * palat pohjan paloihin, luo uuden palikan ja saataa nopeutta. Jos
-     * pelikentan alin kerros tayttyy paloista, metodi poistaa alimman
+     * Metodi tarkistaa, osuuko palikka pohjaan. Jos pelikentan alin kerros tayttyy paloista, metodi poistaa alimman
      * palakerroksen.
      */
 //    public void pelinLoppu() {
@@ -130,6 +139,11 @@ public class Logiikka {
 //        }
 //    }
     
+    /**
+     * Metodi tarkistaa,mahtuuko pohjalle enempää palikoita. 
+     * Jos pelikentan alin kerros tayttyy paloista, metodi poistaa alimman
+     * palakerroksen.
+     */
 //    public void eiMahduEnempaa() {
 //        for (int i = 0; i < this.leveys; i++) {
 //            boolean mahtuu = false;
