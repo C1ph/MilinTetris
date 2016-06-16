@@ -15,6 +15,7 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import tetrispeli.logiikka.Osa;
 
 /**
  *
@@ -41,7 +42,7 @@ public class Alusta extends JPanel implements Paivitys {
      *
      */
     public void piirraPalikka(Palikka piirrettava, Graphics g) {
-        boolean[][] ruudukko = piirrettava.getPalaTaulukko();
+        Osa[][] ruudukko = piirrettava.getPalaTaulukko();
         int i = 0;
         int j = 0;
         while (i < ruudukko.length) {
@@ -49,7 +50,7 @@ public class Alusta extends JPanel implements Paivitys {
         }
         while (j < ruudukko.length) {
             j++;
-            if (ruudukko[i][j]) {
+            if (ruudukko[i][j] != null) {
                 g.fill3DRect((piirrettava.getX() + j) * koko, (piirrettava.getY() + i) * koko, koko, koko, true);
             }
         }

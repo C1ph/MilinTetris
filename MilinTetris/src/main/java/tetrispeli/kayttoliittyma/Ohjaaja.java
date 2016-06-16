@@ -14,6 +14,7 @@ import tetrispeli.logiikka.palikkatyypit.TPalikka;
 import tetrispeli.logiikka.palikkatyypit.Suorapalikka;
 import java.util.*;
 import tetrispeli.logiikka.Ajastin;
+import tetrispeli.logiikka.Logiikka;
 import tetrispeli.logiikka.Palikka;
 import tetrispeli.logiikka.Ruudukko;
 import tetrispeli.logiikka.Suunta;
@@ -27,6 +28,8 @@ import tetrispeli.logiikka.Osa;
  */
 public class Ohjaaja {
 
+    private Alusta alusta;
+    private Logiikka logiikka;
     private Palikka aktiivinen;
     private Ruudukko ruudukko;
     private ArrayList<Palikka> palikat;
@@ -45,12 +48,22 @@ public class Ohjaaja {
         leveys = this.leveys;
         ajastin.addActionListener(ajastin);
     }
+
+    public Logiikka getLogiikka() {
+        return logiikka;
+    }
+
+    public Alusta getAlusta() {
+        return alusta;
+    }
     /**
      * Metodi luo uuden pelin.
      *
      * @param args
      *
      */
+    
+    
     public void uusiPeli() {
         palikat.clear();
         ruudukko.tyhjennaRuudukko();
@@ -61,35 +74,7 @@ public class Ohjaaja {
         paivitaKayttoliittyma();
         ajastin.kaynnista();
     }
-    /**
-     * Metodi palauttaa uuden palikan.
-     *
-     * @param args
-     *
-     * @return uusi Palikka
-     */
-    public Palikka uusiPalikka() {
-        int uusi = new Random().nextInt(7);
-        int x = leveys / 2 - 2;
-        int y = 0;
-        switch (uusi) {
-            case 0:
-                return new Neliopalikka(x, y);
-            case 1:
-                return new JPalikka(x, y);
-            case 2:
-                return new TPalikka(x, y);
-            case 3:
-                return new LPalikka(x, y);
-            case 4:
-                return new SPalikka(x, y);
-            case 5:
-                return new Suorapalikka(x, y);
-            case 6:
-                return new ZPalikka(x, y);
-        }
-        return null;
-    }
+
     /**
      * Metodi lisää palikan ArrayListiin.
      *
@@ -258,4 +243,5 @@ public class Ohjaaja {
         }
         paivitaKayttoliittyma();
     }
+
 }

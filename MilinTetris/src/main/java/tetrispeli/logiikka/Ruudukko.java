@@ -19,15 +19,11 @@ public class Ruudukko {
     private boolean[][] ruudukko;
     private int leveys;
     private int korkeus;
-    private int x;
-    private int y;
 
     public Ruudukko(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.ruudukko = new boolean[korkeus][leveys];
-        this.x = x;
-        this.y = y;
     }
 
     public int getKorkeus() {
