@@ -18,4 +18,4 @@
 | 09.06.2016 | 2 h | Lisää testejä, checkstyle, pit ei toimi koska joissain testeissä vikaa |
 | 12.06.2016 | 3 h | Logiikan refraktorointia sekä single responsibility principlen toteutusta lisää :D |
 | 14.06.2016 | 3 h | Mm. kuuntelijoiden toiminnallisuuden kehittelyä sekä testien refraktorointia |
-| 16.06.2016 | 3 h | Palikkatyyppien toiminnallisuuden päivittäminen booleanista matriisitaulukkoon perustuvaksi 
+| 16.06.2016 | 8 h | Palikkatyyppien toiminnallisuuden päivittäminen booleanista matriisitaulukkoon perustuvaksi, luokka- ja sekvenssikaaviot, koodikatselmoinnin aloitus |
