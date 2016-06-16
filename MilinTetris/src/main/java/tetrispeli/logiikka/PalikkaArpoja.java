@@ -21,29 +21,31 @@ import tetrispeli.logiikka.palikkatyypit.ZPalikka;
 /**
  * Luokka arpoo tietyn palikan laskeutuvaksi.
  */
-public class PalikkaArpoja extends Palikka {
+public class PalikkaArpoja {
+    
+    private int leveys;
 
-    public PalikkaArpoja(int x, int y) {
-        super(x, y);
+    public PalikkaArpoja(int leveys) {
+        this.leveys = leveys;
     }
 
     public Palikka arvoPalikka() {
         Random palikka = new Random();
         int i = palikka.nextInt(7);
         if (i == 0) {
-            return new SPalikka(super.getX(), super.getY());
+            return new SPalikka(leveys / 2, 2);
         } else if (i == 1) {
-            return new LPalikka(super.getX(), super.getY());
+            return new LPalikka(leveys / 2, 2);
         } else if (i == 2) {
-            return new JPalikka(super.getX(), super.getY());
+            return new JPalikka(leveys / 2, 2);
         } else if (i == 3) {
-            return new TPalikka(super.getX(), super.getY());
+            return new TPalikka(leveys / 2, 2);
         } else if (i == 4) {
-            return new Suorapalikka(super.getX(), super.getY());
+            return new Suorapalikka(leveys / 2, 2);
         } else if (i == 5) {
-            return new Neliopalikka(super.getX(), super.getY());
+            return new Neliopalikka(leveys / 2, 2);
         } else {
-            return new ZPalikka(super.getX(), super.getY());
+            return new ZPalikka(leveys / 2, 2);
         }
     }
 }
