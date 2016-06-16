@@ -6,6 +6,8 @@
 package tetrispeli.logiikka;
 
 import java.util.*;
+import tetrispeli.kayttoliittyma.Alusta;
+import tetrispeli.kayttoliittyma.Ohjaaja;
 import static tetrispeli.logiikka.Suunta.ALAS;
 import static tetrispeli.logiikka.Suunta.OIKEA;
 import static tetrispeli.logiikka.Suunta.VASEN;
@@ -17,51 +19,80 @@ import static tetrispeli.logiikka.Suunta.VASEN;
 public class Logiikka {
 
     private Palikka palikka;
+    private Ohjaaja ohjaaja;
+    private PalikkaArpoja arpoja;
+    private Ruudukko ruudukko;
     private ArrayList<Osa> osat;
-    private int leveys;
-    private int korkeus;
-    private int x;
-    private int y;
-    private Ajastin ajastin = null;
 
-    public Logiikka(int leveys, int korkeus) {
-        this.leveys = leveys;
-        this.korkeus = korkeus;
-        this.palikka = palikka;
-        this.osat = new ArrayList<Osa>();
-    }
-
-    public void setAjastin(Ajastin ajastin) {
-        this.ajastin = ajastin;
-    }
-
-    public Ajastin getAjastin() {
-        return this.ajastin;
-    }
-
-    public int getLeveys() {
-        return this.leveys;
-    }
-
-    public int getKorkeus() {
-        return this.korkeus;
+    public Logiikka(Ohjaaja ohjaaja) {
+        this.ohjaaja = ohjaaja;
+        this.ruudukko = new Ruudukko(10, 25);
+        this.arpoja = new PalikkaArpoja(this.ruudukko.getLeveys());
+        this.palikka = arpoja.arvoPalikka();
+        this.osat = new ArrayList<>();
     }
 
     public Palikka getPalikka() {
         return this.palikka;
     }
 
-    public ArrayList<Osa> getPohjanPalat() {
-        return this.osat;
-    }
-
     public void setPalikka(Palikka palikka) {
         this.palikka = palikka;
     }
 
-    public void setOsat(ArrayList<Osa> osat) {
-        this.osat = osat;
+    public void siirraAlas() {
+        palikka.siirraAlas();
     }
+
+    public void siirraYlos() {
+        palikka.siirraYlos();
+    }
+
+    public void siirraVasemmalle() {
+        palikka.siirraVasemmalle();
+    }
+
+    public void siirraOikealle() {
+        palikka.siirraOikealle();
+    }
+
+    public void kierraOikealle() {
+        palikka.kierraOikealle();
+    }
+
+    public boolean meneekoPaalle(ArrayList<Osa> osat, Osa osa) {
+        for (Osa o : osat) {
+            if (o.getX() == osa.getX() && o.getY() == osa.getY()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean onkoTyhja() {
+        int rivi = 0;
+        while (rivi < ruudukko.getLeveys()) {
+            rivi++;
+            for (int sarake = 0; sarake < ruudukko.getKorkeus(); sarake++) {
+                if (ruudukko.palaTaulukko()[rivi][sarake] != null) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+//    public boolean meneekoSeinastaLapi(Suunta suunta, int leveys, int korkeus) {
+//        if (suunta == Suunta.ALAS) {
+//            return (this.y > (korkeus - 2));
+//        } else if (suunta == Suunta.OIKEA) {
+//            return (this.x > (leveys - 1));
+//        } else if (suunta == Suunta.VASEN) {
+//            return (this.x < 0);
+//        } else {
+//            return (this.y < 0);
+//        }
+//    }
 
     /**
      * Metodi tarkistaa, osuuko palikka pohjaan, ja jos osuu, lisaa palikan
@@ -69,68 +100,41 @@ public class Logiikka {
      * pelikentan alin kerros tayttyy paloista, metodi poistaa alimman
      * palakerroksen.
      */
-    public void pelinLoppu() {
-        if (osuuPohjaan()) {
-            for (Osa o : palikka.getOsat()) {
-                this.osat.add(o);
-            }
-            luoUusiPalikka();
-        }
-        while (pohjaTaynna()) {
-            alinRiviPois();
-        }
-    }
+//    public void pelinLoppu() {
+//        if (osuukoPohjaan()) {
+//            for (Osa o : palikka.getOsat()) {
+//                this.osat.add(o);
+//            }
+//            luoUusiPalikka();
+//        }
+//        while (eiMahduEnempaa()) {
+//            alinRiviPois();
+//        }
+//    }
+    
+//    public void eiMahduEnempaa() {
+//        for (int i = 0; i < this.leveys; i++) {
+//            boolean mahtuu = false;
+//            for (Osa o : this.osat) {
+//                if (o.getX() == i & o.getY() == (this.korkeus / 2)) {
+//                    mahtuu = true;
+//                }
+//            }
+//            if (!mahtuu) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//
+//    /**
+//     * Metodi luo peliin uuden palikan, ja jos uusi palikka asettuu pohjan
+//     * palojen paalle, estaa palikan liikkumisen alaspain
+//     */
 
-    /**
-     * Metodi luo peliin uuden palikan, ja jos uusi palikka asettuu pohjan
-     * palojen paalle, estaa palikan liikkumisen alaspain
-     */
-    public void luoUusiPalikka() {
-        Osa palikka = new Osa(0, 0);
-        for (Osa o : this.palikka.getOsat()) {
-            if (this.palikka.meneekoPaalle(this.osat, o)) {
-                this.ajastin.paivita();
-            }
-        }
-    }
-
-    /**
-     * Metodi poistaa pelkentän alareunasta alimman rivin palikoita ja siirtää
-     * muita pohjan palikoita yhden askeleen alaspäin
-     */
-    public void alinRiviPois() {
-        ArrayList<Osa> poistettavat = new ArrayList<>();
-        for (Osa o : osat) {
-            if (o.getY() >= (this.korkeus - 1)) {
-                poistettavat.add(o);
-            }
-        }
-        for (Osa o : poistettavat) {
-            osat.remove(o);
-        }
-        for (Osa o : osat) {
-            o.siirra(x, y);
-        }
-    }
-
-    /**
-     * Metodi kertoo, osuuko palikka koordinaatiston alareunaan tai pelikentällä
-     * oleviin paloihin.
-     *
-     * @return true jos palikka osuu koordinaatiston alareunaan tai pelikentällä
-     * oleviin paloihin, muuten false
-     */
-    public boolean osuuPohjaan() {
-        boolean palautettava = false;
-        for (Osa o : this.palikka.getOsat()) {
-            if (o.getY() >= (this.korkeus - 2)) {
-                palautettava = true;
-            } else if (osuukoPohjanPaloihin(o, ALAS)) {
-                palautettava = true;
-            }
-        }
-        return palautettava;
-    }
+//    public void luoUusiPalikka() {
+//        palikka.arvoPalikka();
+//    }
 
     /**
      * Metodi kertoo, osuuko pelin palikka siirrettäessä pohjan paloihin
@@ -148,18 +152,6 @@ public class Logiikka {
             }
         }
         return false;
-    }
-
-    /**
-     * Metodi siirtää pelin palikkaa haluttuun suuntaan, mikäli tämä ei siirrä
-     * palikkaa päällekkäin pohjan palojen kanssa
-     *
-     * @param suunta suunta, johon palikkaa halutaan siirtää
-     */
-    public void siirraPalikkaa(Suunta suunta) {
-        if (!(osuukoPohjanPaloihin(suunta))) {
-            this.palikka.siirra(x, y);
-        }
     }
 
     /**
@@ -238,44 +230,5 @@ public class Logiikka {
             }
         }
         return false;
-    }
-
-    /**
-     * Metodi kertoo, onko pelikentän alin palarivi täynnä
-     *
-     * @return true, jos pelikentän alin palarivi on täynnä, muuten false
-     */
-    public boolean pohjaTaynna() {
-        for (int i = 0; i < this.leveys; i++) {
-            boolean taynna = false;
-            for (Osa o : this.osat) {
-                if (o.getX() == i && o.getY() == (this.korkeus - 2)) {
-                    taynna = true;
-                }
-            }
-            if (!taynna) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Metodi kääntää pelin palikkaa vastapäivään, mikäli tämä ei saa palikan
-     * paloja asettumaan päällekkäin pohjan palojen kanssa
-     */
-    public void kaannaVasemmalle() {
-        this.palikka.kierraVasemmalle(this.leveys, this.korkeus);
-        boolean osuuko = false;
-        for (Osa o : this.palikka.getOsat()) {
-            if (this.palikka.meneekoPaalle(this.osat, o)) {
-                osuuko = true;
-            }
-        }
-        if (osuuko) {
-            for (int i = 1; i <= 3; i++) {
-                this.palikka.kierraVasemmalle(this.leveys, this.korkeus);
-            }
-        }
     }
 }
