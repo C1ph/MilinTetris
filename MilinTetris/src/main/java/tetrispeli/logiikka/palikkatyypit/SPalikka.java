@@ -18,11 +18,9 @@ public class SPalikka extends Palikka {
 
     public SPalikka(int x, int y) {
         super(x, y);
-        boolean[][] uusi = {
-            {false, false, false},
-            {false, true, true},
-            {true, true, false}
-        };
-        super.ruudukko = uusi;
+        super.getOsat().add(new Osa(0,0));
+        super.getOsat().add(new Osa(-1,0));
+        super.getOsat().add(new Osa(0,1));
+        super.getOsat().add(new Osa(1,1));
     }
 }
