@@ -8,4 +8,14 @@ Harjoitustyön aiheena on yksinkertaisella logiikalla toimiva tetris-peli, jossa
 
 [Checkstyle](dokumentaatio/Checkstyle-raportit/checkstyle.html)
 
-![Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/Uusi_luokkakaavio.png)
+Logiikan luokkakaavio:
+
+![Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/Paivitetty_luokkakaavio_logiikalle.png)
+
+Sekvenssikaavio palikan kääntämiselle:
+
+![Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/Sekvenssikaavio1.png)
+
+Sekvenssikaavio palikan liikuttamiselle:
+
+![Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/Sekvenssikaavio2.png)
