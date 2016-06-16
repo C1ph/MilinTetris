@@ -18,49 +18,24 @@ import java.util.TimerTask;
 /**
  * Luokka luo pelissä tarvittavan ajastimen.
  */
-public abstract class Ajastin extends Timer implements ActionListener {
+public class Ajastin extends Timer implements ActionListener {
 
     private Ohjaaja ohjaaja;
-    private Timer ajastin;
-    private TimerTask ajastinTehtava;
-    private long aloitusaika;
 
     public Ajastin(Ohjaaja ohjaaja) {
         super(1000, null);
+        this.addActionListener(this);
         this.ohjaaja = ohjaaja;
-        this.start();
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        ohjaaja.ajastinSiirto();
-    }
-
-    public void paivita() {
-        int aika = 1000;
-        aika--;
-        if (aika < 100) {
-            aika = 100;
-        }
-        super.setDelay(aika);
-    }
-
-    public void kaynnista() {
-        if (!this.ajastin.isRunning()) {
-            this.aloitusaika = System.currentTimeMillis();
-            this.ajastin.start();
-        }
-    }
-
-    public void pysayta() {
-        if (this.ajastin.isRunning()) {
-            this.ajastin.stop();
-        }
+        this.ohjaaja.getLogiikka().siirraAlas();
+        this.ohjaaja.getAlusta().paivita();
     }
     
-    @Override
-    public String toString() {
-        return "000";
+    public void nopeuta() {
+        int vanha = this.getDelay();
+        this.setDelay(vanha / 2);
     }
-
 }
