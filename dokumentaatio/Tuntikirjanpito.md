@@ -13,6 +13,9 @@
 | 30.5.2016 | 2 h | Luokkakaavion päivitys relaatiokaavioksi, logiikan pienempiin osiin jakamista (palikanarpojan ja osa-luokan luonti) |
 | 01.06.2016 | 1 h | Koodikatselmoinnin teko ja projektitestaus |
 | 02.06.2016 | 2 h | Päivitykset kuntoon, uusi pit ja checkstyle |
-| 06.06.2016 | 2 h | Testien parantelua logiikalle, käyttöliittymän toiminnallisuuden parantelu
-| 07.06.2016 | 3 h | Javadoccauksen aloitus, käyttöliittymän graafista puolta aloitettu, päivitystoiminnallisuus sekä ajastin
-| 09.06.2016 | 2 h | Lisää testejä, checkstyle, pit ei toimi koska joissain testeissä vikaa
+| 06.06.2016 | 2 h | Testien parantelua logiikalle, käyttöliittymän toiminnallisuuden parantelu |
+| 07.06.2016 | 3 h | Javadoccauksen aloitus, käyttöliittymän graafista puolta aloitettu, päivitystoiminnallisuus sekä ajastin |
+| 09.06.2016 | 2 h | Lisää testejä, checkstyle, pit ei toimi koska joissain testeissä vikaa |
+| 12.06.2016 | 3 h | Logiikan refraktorointia sekä single responsibility principlen toteutusta lisää :D |
+| 14.06.2016 | 3 h | Mm. kuuntelijoiden toiminnallisuuden kehittelyä sekä testien refraktorointia |
+| 16.06.2016 | 3 h | Palikkatyyppien toiminnallisuuden päivittäminen booleanista matriisitaulukkoon perustuvaksi 
