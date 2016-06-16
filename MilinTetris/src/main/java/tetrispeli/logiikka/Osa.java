@@ -8,6 +8,10 @@ package tetrispeli.logiikka;
 import java.awt.Color;
 import tetrispeli.logiikka.Palikka;
 import tetrispeli.logiikka.Ruudukko;
+import java.util.*;
+import static tetrispeli.logiikka.Suunta.ALAS;
+import static tetrispeli.logiikka.Suunta.OIKEA;
+import static tetrispeli.logiikka.Suunta.VASEN;
 
 /**
  *
@@ -20,11 +24,14 @@ public class Osa {
 
     private int x;
     private int y;
-    public boolean ruudukko[][];
+    private Osa osa;
+    private Suunta suunta;
+    private ArrayList<Osa> osat;
 
     public Osa(int x, int y) {
         this.x = x;
         this.y = y;
+        this.osat = osat;
     }
 
     public int getX() {
@@ -34,8 +41,17 @@ public class Osa {
     public int getY() {
         return y;
     }
+    
+    public ArrayList<Osa> getOsat(int x, int y) {
+        return osat;
+    }
+    
+    public ArrayList<Osa> setOsat(int x, int y) {
+        this.osat = osat;
+        return osat;
+    }
 
-    public void siirra(Suunta suunta) {
+    public void siirra(int x, int y) {
         if (suunta == Suunta.OIKEA) {
             x += 1;
         } else if (suunta == Suunta.ALAS) {
@@ -44,22 +60,22 @@ public class Osa {
             x -= 1;
         }
     }
-
-    public boolean[][] kaanna() {
-        boolean[][] uusi = new boolean[ruudukko.length][ruudukko.length];
-        int i = 0;
-        int j = ruudukko.length - 1;
-        int a = 0;
-        int b = 0;
-        while (a < ruudukko.length) {
-            a++;
-            i++;
-            while (b < ruudukko.length) {
-                j--;
-                b++;
-                uusi[a][b] = ruudukko[j][i];
-            }
-        }
-        return uusi;
+    
+    public void kaannaVasemmalle() {
+        int uusiX = this.osa.getX();
+        int uusiY = this.osa.getY();
+        if (this.suunta == OIKEA) {
+            uusiY -= 1;
+        } else if (this.suunta == VASEN) {
+            this.suunta = ALAS;
+            uusiY += 1;
+        } else if (this.suunta == ALAS) {
+            this.suunta = VASEN;
+            uusiX -= 1;
+        } else {
+            this.suunta = OIKEA;
+            uusiX++;
+        }      
+        siirra(uusiX, uusiY);
     }
 }

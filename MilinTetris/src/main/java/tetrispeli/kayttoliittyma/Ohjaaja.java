@@ -5,15 +5,19 @@
  */
 package tetrispeli.kayttoliittyma;
 
-import java.util.ArrayList;
-import java.util.Random;
+import tetrispeli.logiikka.palikkatyypit.ZPalikka;
+import tetrispeli.logiikka.palikkatyypit.SPalikka;
+import tetrispeli.logiikka.palikkatyypit.LPalikka;
+import tetrispeli.logiikka.palikkatyypit.Neliopalikka;
+import tetrispeli.logiikka.palikkatyypit.JPalikka;
+import tetrispeli.logiikka.palikkatyypit.TPalikka;
+import tetrispeli.logiikka.palikkatyypit.Suorapalikka;
+import java.util.*;
 import tetrispeli.logiikka.Ajastin;
-import tetrispeli.logiikka.Palikat.*;
 import tetrispeli.logiikka.Palikka;
 import tetrispeli.logiikka.Ruudukko;
 import tetrispeli.logiikka.Suunta;
 import tetrispeli.logiikka.Osa;
-
 /**
  *
  * @author annettek
@@ -41,7 +45,6 @@ public class Ohjaaja {
         leveys = this.leveys;
         ajastin.addActionListener(ajastin);
     }
-
     /**
      * Metodi luo uuden pelin.
      *
@@ -58,7 +61,6 @@ public class Ohjaaja {
         paivitaKayttoliittyma();
         ajastin.kaynnista();
     }
-
     /**
      * Metodi palauttaa uuden palikan.
      *
@@ -70,7 +72,6 @@ public class Ohjaaja {
         int uusi = new Random().nextInt(7);
         int x = leveys / 2 - 2;
         int y = 0;
-
         switch (uusi) {
             case 0:
                 return new Neliopalikka(x, y);
@@ -89,7 +90,6 @@ public class Ohjaaja {
         }
         return null;
     }
-
     /**
      * Metodi lisää palikan ArrayListiin.
      *
@@ -99,7 +99,6 @@ public class Ohjaaja {
     public void lisaaPalikka(Palikka palikka) {
         palikat.add(palikka);
     }
-
     /**
      * Metodi lisää päivityksen ArrayListiin.
      *
@@ -109,55 +108,44 @@ public class Ohjaaja {
     public void lisaaPaivitettava(Paivitys paivitys) {
         paivitykset.add(paivitys);
     }
-
     public ArrayList<Palikka> getPalikat() {
         return palikat;
     }
-
     public Palikka getAktiivinen() {
         return aktiivinen;
     }
-
     public boolean getPaalla() {
         return paalla;
     }
-
     public boolean getTauko() {
         return tauko;
     }
-
     public boolean getLoppu() {
         return loppu;
     }
-
     public void setLoppu(boolean gameover) {
         loppu = gameover;
     }
-
     /**
      * Metodi päivittää käyttöliittymän tilanteen.
      *
      * @param args
-     *
      */
     public void paivitaKayttoliittyma() {
         for (Paivitys paivitettava : paivitykset) {
             paivitettava.paivita();
         }
     }
-
     /**
      * Metodi luo aktiivisen palikan.
      *
      * @param args
-     *
      * @return aktiivinen Palikka
      */
     public Palikka luoPalikka() {
         aktiivinen = uusiPalikka();
         return aktiivinen;
     }
-
     /**
      * Metodi siirtää palikkaa haluttuun suuntaan.
      *
@@ -179,12 +167,10 @@ public class Ohjaaja {
         }
         return false;
     }
-
     /**
      * Metodi vaihtaa aktiivisen palikan.
      *
      * @param args
-     *
      */
     public void vaihdaPalikka() {
         palikat.add(aktiivinen);
@@ -203,12 +189,10 @@ public class Ohjaaja {
         paivitaKayttoliittyma();
         ajastin.paivita();
     }
-
     /**
      * Metodi kääntää aktiivisen palikan.
      *
      * @param args
-     *
      */
     public void kaannaPalikka() {
         boolean[][] kaannos = aktiivinen.kierraOikealle();
@@ -217,24 +201,20 @@ public class Ohjaaja {
             paivitaKayttoliittyma();
         }
     }
-
     /**
      * Metodi siirtää ajastimen aikaa.
      *
      * @param args
-     *
      */
     public void ajastinSiirto() {
         if (!siirraPalikka(Suunta.ALAS)) {
             vaihdaPalikka();
         }
     }
-
     /**
      * Metodi tarkistaa, onko poistettavia rivejä.
      *
      * @param args
-     *
      */
     private void poistaakoRiveja() {
         int poistettava = ruudukko.palautaRivi();
@@ -251,12 +231,10 @@ public class Ohjaaja {
         poistaTyhjia();
         paivitaKayttoliittyma();
     }
-
     /**
      * Metodi poistaa turhan rivin.
      *
      * @param args
-     *
      */
     public void poistaTyhjia() {
         int i = 0;
@@ -267,12 +245,10 @@ public class Ohjaaja {
             }
         }
     }
-
     /**
-     * Metodi asettaa ajastimen päälle tai pois..
+     * Metodi asettaa ajastimen päälle tai pois.
      *
      * @param paalla boolean
-     *
      */
     public void setPaalla(boolean paalla) {
         if (paalla == false) {

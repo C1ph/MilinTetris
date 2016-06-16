@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetrispeli.logiikka.Palikat;
+package tetrispeli.logiikka.palikkatyypit;
 
 import tetrispeli.logiikka.Palikka;
 
@@ -12,16 +12,17 @@ import tetrispeli.logiikka.Palikka;
  * @author annettek
  */
 /**
- * Luokka luo Z-muotoisen palikan.
+ * Luokka luo suoran palikan.
  */
-public class ZPalikka extends Palikka {
+public class Suorapalikka extends Palikka {
 
-    public ZPalikka(int x, int y) {
+    public Suorapalikka(int x, int y) {
         super(x, y);
         boolean[][] uusiRuudukko = {
-            {false, true, false},
-            {true, true, true},
-            {false, false, false}
+            {false, true, false, false},
+            {false, true, false, false},
+            {false, true, false, false},
+            {false, true, false, false}
         };
         super.ruudukko = uusiRuudukko;
     }

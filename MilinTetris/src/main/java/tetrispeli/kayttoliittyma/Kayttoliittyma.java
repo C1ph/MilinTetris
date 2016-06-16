@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import tetrispeli.kayttoliittyma.*;
 import tetrispeli.logiikka.Ajastin;
-import tetrispeli.logiikka.Palikat.*;
 import tetrispeli.logiikka.Palikka;
 import tetrispeli.logiikka.Ruudukko;
 import tetrispeli.logiikka.Suunta;

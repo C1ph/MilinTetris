@@ -18,23 +18,23 @@ public enum Suunta {
 
     private int siirto;
 
-    private Suunta(int siirto){
+    private Suunta(int siirto) {
         this.siirto = siirto;
     }
 
-    public int getSiirto (){
+    public int getSiirto() {
         return siirto;
     }
 
-    public Suunta getVasen (){
+    public Suunta getVasen() {
         return VASEN;
     }
 
-    public Suunta getOikea (){
+    public Suunta getOikea() {
         return OIKEA;
     }
 
-    public Suunta getAlas (){
+    public Suunta getAlas() {
         return ALAS;
     }
 }
