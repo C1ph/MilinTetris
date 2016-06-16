@@ -30,7 +30,7 @@ public class Ohjaaja {
 
     private Alusta alusta;
     private Logiikka logiikka;
-    private Palikka aktiivinen;
+    private Palikka palikka;
     private Ruudukko ruudukko;
     private ArrayList<Palikka> palikat;
     private ArrayList<Paivitys> paivitykset;
@@ -56,6 +56,12 @@ public class Ohjaaja {
     public Alusta getAlusta() {
         return alusta;
     }
+
+    public Palikka getPalikka() {
+        return palikka;
+    }
+    
+    
     /**
      * Metodi luo uuden pelin.
      *
@@ -67,12 +73,11 @@ public class Ohjaaja {
     public void uusiPeli() {
         palikat.clear();
         ruudukko.tyhjennaRuudukko();
-        aktiivinen = luoPalikka();
+        palikka = luoPalikka();
         paalla = true;
         tauko = false;
         loppu = false;
         paivitaKayttoliittyma();
-        ajastin.kaynnista();
     }
 
     /**
@@ -96,9 +101,7 @@ public class Ohjaaja {
     public ArrayList<Palikka> getPalikat() {
         return palikat;
     }
-    public Palikka getAktiivinen() {
-        return aktiivinen;
-    }
+    
     public boolean getPaalla() {
         return paalla;
     }
@@ -128,8 +131,7 @@ public class Ohjaaja {
      * @return aktiivinen Palikka
      */
     public Palikka luoPalikka() {
-        aktiivinen = uusiPalikka();
-        return aktiivinen;
+        palikka.arvoPalikka();
     }
     /**
      * Metodi siirtää palikkaa haluttuun suuntaan.

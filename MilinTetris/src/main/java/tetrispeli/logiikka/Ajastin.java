@@ -28,12 +28,20 @@ public class Ajastin extends Timer implements ActionListener {
         this.ohjaaja = ohjaaja;
     }
 
+    /**
+     * Metodi, joka siirtaa palikkaa yhden askeleen alaspäin joka sekunnilla ja päivittää pelialustan tilanteen.
+     * @param ae 
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         this.ohjaaja.getLogiikka().siirraAlas();
         this.ohjaaja.getAlusta().paivita();
     }
     
+    /**
+     * 
+     * Metodi, joka nopeuttaa palikan tippumisnopeutta.
+     */
     public void nopeuta() {
         int vanha = this.getDelay();
         this.setDelay(vanha / 2);

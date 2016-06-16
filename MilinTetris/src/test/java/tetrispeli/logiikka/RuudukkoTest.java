@@ -15,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tetrispeli.logiikka.palikkatyypit.Neliopalikka;
+import tetrispeli.kayttoliittyma.*;
 
 /**
  *
@@ -85,6 +86,5 @@ public class RuudukkoTest {
     @Test
     public void riviPalautetaanOikein(){
         assertEquals(-1, ruudukko.palautaRivi());
-    }
-    
+    }   
 }

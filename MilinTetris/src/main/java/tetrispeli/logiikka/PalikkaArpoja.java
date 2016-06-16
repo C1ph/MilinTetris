@@ -29,6 +29,11 @@ public class PalikkaArpoja {
         this.leveys = leveys;
     }
 
+    /**
+     * 
+     * Metodi arpoo seuraavan laskeutuvan palikan pelialustalle.
+     * @return palikka 
+     */
     public Palikka arvoPalikka() {
         Random palikka = new Random();
         int i = palikka.nextInt(7);

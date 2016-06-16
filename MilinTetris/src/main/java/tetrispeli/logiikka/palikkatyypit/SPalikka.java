@@ -5,6 +5,7 @@
  */
 package tetrispeli.logiikka.palikkatyypit;
 
+import tetrispeli.logiikka.Osa;
 import tetrispeli.logiikka.Palikka;
 
 /**

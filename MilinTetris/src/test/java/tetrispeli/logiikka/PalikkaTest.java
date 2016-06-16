@@ -68,69 +68,90 @@ public class PalikkaTest {
     @Test
     public void onkoTyhjaToimiiJosRuudukkoEiOleTyhja() {
         Ruudukko r = new Ruudukko(0, 0);
-        assertEquals(true, r.onkoTyhja());
+        assertEquals(true, r.getLogiikka().onkoTyhja());
     }
-
-//    @Test
-//    public void arvontaToimii() {
-//        PalikkaArpoja arpoja = new PalikkaArpoja(0, 0);
-//        Palikka numero = arpoja.arvoPalikka();
-//    }
 
     @Test
     public void palikanSiirtoOnnistuu() {
         Osa o = new Osa(1, 1);
-        o.siirra(Suunta.OIKEA);
+        o.siirraAlas(1);
         assertEquals(2, o.getX());
-        o.siirra(Suunta.ALAS);
+        o.siirraOikealle(1);
         assertEquals(2, o.getY());
     }
     
-//    @Test
-//    public void tyhjienPalikoidenPoistoToimii() {
-//        JPalikka palikka = new JPalikka(0, 0);
-//        boolean[][] tyhjaRuudukko = {
-//            {false, false, false},
-//            {false, false, false},
-//            {false, false, false}
-//        };
-//        palikka.setRuudukko(tyhjaRuudukko);
-//        ohjaaja.lisaaPalikka(palikka);
-//        assertEquals(1, ohjaaja.getPalikat().size());
-//    }
+    @Test
+    public void tyhjienPalikoidenPoistoToimii() {
+        JPalikka palikka = new JPalikka(0, 0);
+        boolean[][] tyhjaRuudukko = {
+            {false, false, false},
+            {false, false, false},
+            {false, false, false}
+        };
+        palikka.setRuudukko(tyhjaRuudukko);
+        ohjaaja.lisaaPalikka(palikka);
+        assertEquals(1, ohjaaja.getPalikat().size());
+    }
 
-//    @Test
-//    public void tyhjatRivitPoistetaan() {
-//        JPalikka palikka = new JPalikka(0, 0);
-//        boolean[][] tyhjaRuudukko = {
-//            {false, false, false},
-//            {false, false, false},
-//            {false, false, false}
-//        };
-//        palikka.setRuudukko(tyhjaRuudukko);
-//        ohjaaja.poistaTyhjia();
-//        assertEquals(0, ohjaaja.getPalikat().size());
-//    }
+    @Test
+    public void tyhjatRivitPoistetaan() {
+        JPalikka palikka = new JPalikka(0, 0);
+        boolean[][] tyhjaRuudukko = {
+            {false, false, false},
+            {false, false, false},
+            {false, false, false}
+        };
+        palikka.setRuudukko(tyhjaRuudukko);
+        ohjaaja.poistaTyhjia();
+        assertEquals(0, ohjaaja.getPalikat().size());
+    }
 
-//    @Test
-//    public void siirtoOnnistuu() {
-//        ohjaaja.luoPalikka();
-//        Palikka palikka = ohjaaja.getAktiivinen();
-//        int x = palikka.getX();
-//        int y = palikka.getY();
-//        ohjaaja.siirraPalikka(Suunta.OIKEA);
-//        ohjaaja.siirraPalikka(Suunta.ALAS);
-//        assertEquals(x + 1, palikka.getX());
-//        assertEquals(y + 1, palikka.getY());
-//    }
+    @Test
+    public void siirtoAlasOnnistuu() {
+        ohjaaja.luoPalikka();
+        int x = palikka.getX();
+        int y = palikka.getY();
+        palikka.siirraAlas();
+        assertEquals(x - 1, palikka.getX());
+        assertEquals(y - 1, palikka.getY());
+    }
+    
+    @Test
+    public void siirtoYlosOnnistuu() {
+        ohjaaja.luoPalikka();
+        int x = palikka.getX();
+        int y = palikka.getY();
+        palikka.siirraYlos();
+        assertEquals(x + 1, palikka.getX());
+        assertEquals(y + 1, palikka.getY());
+    }
 
-//    @Test
-//    public void uusiPalikkaOnOikeassaPaikassa(){
-//        int koko = 10;
-//        ohjaaja = new Ohjaaja(koko, 10);
-//        ohjaaja.luoPalikka();
-//        Palikka palikka = ohjaaja.getAktiivinen();
-//        assertEquals(koko / 2 - 2, palikka.getX());
-//        assertEquals(0, palikka.getY());
-//    }
+    @Test
+    public void siirtoVasemmalleOnnistuu() {
+        ohjaaja.luoPalikka();
+        int x = palikka.getX();
+        int y = palikka.getY();
+        palikka.siirraVasemmalle();
+        assertEquals(x - 1, palikka.getX());
+        assertEquals(y + 1, palikka.getY());
+    }
+    
+    @Test
+    public void siirtoOikealleOnnistuu() {
+        ohjaaja.luoPalikka();
+        int x = palikka.getX();
+        int y = palikka.getY();
+        palikka.siirraOikealle();
+        assertEquals(x + 1, palikka.getX());
+        assertEquals(y - 1, palikka.getY());
+    }
+    
+    @Test
+    public void uusiPalikkaOnOikeassaPaikassa(){
+        int koko = 10;
+        ohjaaja = new Ohjaaja(koko, 10);
+        ohjaaja.luoPalikka();
+        assertEquals(koko / 2 - 2, palikka.getX());
+        assertEquals(0, palikka.getY());
+    }
 }

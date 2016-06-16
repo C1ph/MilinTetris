@@ -8,9 +8,9 @@ Käyttäjät: Pelaaja
 
 Toiminnot: Liikutella palikoita nuolilla ja tauottaa pelinkulku sekä mahdollinen pisteidenlasku.
 
-Luokkakaavio: 
+Luokkakaavio logiikalle: 
 
-![Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/Uusi_luokkakaavio.png)
+![Alt text](https://github.com/annettekemppi/MilinTetris/blob/master/dokumentaatio/UPaivitetty_luokkakaavio_logiikalle.png)
 
 Sekvenssikaavio palikan kääntämiselle:
 

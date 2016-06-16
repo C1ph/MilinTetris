@@ -9,6 +9,9 @@ package tetrispeli.kayttoliittyma;
  *
  * @author annettek
  */
+/**
+ * Rajapinta päivittää pelitilanteen.
+ */
 public interface Paivitys {
     public void paivita();
 }

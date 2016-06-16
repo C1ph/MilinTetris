@@ -58,6 +58,11 @@ public class Logiikka {
         return logiikka;
     }
 
+    /**
+     * 
+     * Metodit siirtävät palikkaa haluttuun suuntaan.
+     */
+    
     public void siirraAlas() {
         palikka.siirraAlas();
     }
@@ -74,6 +79,10 @@ public class Logiikka {
         palikka.siirraOikealle();
     }
 
+    /**
+     * Metodi kiertää palikkaa asteen verran oikealle.
+     */
+    
     public void kierraOikealle() {
         palikka.kierraOikealle();
     }

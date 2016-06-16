@@ -47,4 +47,10 @@ public class PalikkaArpojaTest {
 //        Palikka arvottu = arpoja.arvoPalikka();
 //        assertEquals(t, arvottu);
 //    }
+    
+//    @Test
+//    public void arvontaToimii() {
+//        PalikkaArpoja arpoja = new PalikkaArpoja(0, 0);
+//        Palikka numero = arpoja.arvoPalikka();
+//    }
 }

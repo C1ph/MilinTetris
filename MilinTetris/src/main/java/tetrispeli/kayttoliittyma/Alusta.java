@@ -68,8 +68,8 @@ public class Alusta extends JPanel implements Paivitys {
         for (Palikka piirrettava : ohjaaja.getPalikat()) {
             piirraPalikka(piirrettava, g);
         }
-        if (ohjaaja.getAktiivinen() != null) {
-            piirraPalikka(ohjaaja.getAktiivinen(), g);
+        if (ohjaaja.getPalikka() != null) {
+            piirraPalikka(ohjaaja.getPalikka(), g);
         }
     }
 

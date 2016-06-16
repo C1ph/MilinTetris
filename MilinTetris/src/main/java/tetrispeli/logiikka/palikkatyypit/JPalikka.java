@@ -6,6 +6,7 @@
 package tetrispeli.logiikka.palikkatyypit;
 
 import java.awt.Color;
+import tetrispeli.logiikka.Osa;
 import tetrispeli.logiikka.Palikka;
 
 /**

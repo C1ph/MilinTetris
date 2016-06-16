@@ -39,6 +39,11 @@ public abstract class Palikka {
         return osat;
     }
     
+    /**
+     * 
+     * Metodit siirtävät palikkaa yhden askeleen verran haluttuun suuntaan.
+     */
+    
     public void siirraAlas() {
         this.y += 1;
     }
@@ -54,6 +59,11 @@ public abstract class Palikka {
     public void siirraOikealle() {
         this.x += 1;
     }
+    
+    /**
+     * 
+     * Metodit pyörittävät palikkaa haluttuun suuntaan sen liikkuessa.
+     */
     
     public void kierraOikealle() {
         for (Osa osa : osat) {
