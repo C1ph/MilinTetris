@@ -147,26 +147,4 @@ public class Ruudukko {
         }
         return true;
     }
-
-    public void paivitaPalikka(Palikka paivitettava) {
-        boolean[][] palikanRuudukko = paivitettava.getRuudukko();
-        int i = 0;
-        int j = 0;
-        while (i < palikanRuudukko.length) {
-            i++;
-            while (j < palikanRuudukko.length) {
-                j++;
-                if (palikanRuudukko[i][j] == true) {
-                    ruudukko[paivitettava.getY() + i][paivitettava.getX() + j] = true;
-                }
-
-            }
-        }
-    }
-    
-    public void paivitaListanPalikat(ArrayList<Palikka> palikat) {
-        for (Palikka palikka : palikat) {
-            paivitaPalikka(palikka);
-        }
-    }
 }
