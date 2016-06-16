@@ -24,14 +24,10 @@ public class Osa {
 
     private int x;
     private int y;
-    private Osa osa;
-    private Suunta suunta;
-    private ArrayList<Osa> osat;
 
     public Osa(int x, int y) {
         this.x = x;
         this.y = y;
-        this.osat = osat;
     }
 
     public int getX() {
@@ -41,41 +37,12 @@ public class Osa {
     public int getY() {
         return y;
     }
-    
-    public ArrayList<Osa> getOsat(int x, int y) {
-        return osat;
-    }
-    
-    public ArrayList<Osa> setOsat(int x, int y) {
-        this.osat = osat;
-        return osat;
+
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public void siirra(int x, int y) {
-        if (suunta == Suunta.OIKEA) {
-            x += 1;
-        } else if (suunta == Suunta.ALAS) {
-            y += 1;
-        } else if (suunta == Suunta.VASEN) {
-            x -= 1;
-        }
-    }
-    
-    public void kaannaVasemmalle() {
-        int uusiX = this.osa.getX();
-        int uusiY = this.osa.getY();
-        if (this.suunta == OIKEA) {
-            uusiY -= 1;
-        } else if (this.suunta == VASEN) {
-            this.suunta = ALAS;
-            uusiY += 1;
-        } else if (this.suunta == ALAS) {
-            this.suunta = VASEN;
-            uusiX -= 1;
-        } else {
-            this.suunta = OIKEA;
-            uusiX++;
-        }      
-        siirra(uusiX, uusiY);
+    public void setY(int y) {
+        this.y = y;
     }
 }
