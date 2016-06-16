@@ -101,7 +101,7 @@ public class Kayttoliittyma implements Runnable, Paivitys {
      *
      */
     public void luoKomponentit(Container container) {
-        Alusta alusta = new Alusta(koko, ohjaaja);
+        Alusta alusta = new Alusta(ohjaaja);
         alusta.setBorder(BorderFactory.createEtchedBorder());
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
         valikko = luoValikko();

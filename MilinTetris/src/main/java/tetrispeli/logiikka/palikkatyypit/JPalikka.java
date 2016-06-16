@@ -20,10 +20,10 @@ public class JPalikka extends Palikka {
     
     public JPalikka(int x, int y) {
         super(x, y);
-        super.getOsat().add(new Osa(0,0));
-        super.getOsat().add(new Osa(-1,0));
-        super.getOsat().add(new Osa(0,1));
-        super.getOsat().add(new Osa(0,2));
+        super.getOsat().add(new Osa(0, 0));
+        super.getOsat().add(new Osa(-1, 0));
+        super.getOsat().add(new Osa(0, 1));
+        super.getOsat().add(new Osa(0, 2));
     }
 }
 

@@ -19,9 +19,9 @@ public class Suorapalikka extends Palikka {
 
     public Suorapalikka(int x, int y) {
         super(x, y);
-        super.getOsat().add(new Osa(0,0));
-        super.getOsat().add(new Osa(0,1));
-        super.getOsat().add(new Osa(0,2));
-        super.getOsat().add(new Osa(0,3));
+        super.getOsat().add(new Osa(0, 0));
+        super.getOsat().add(new Osa(0, 1));
+        super.getOsat().add(new Osa(0, 2));
+        super.getOsat().add(new Osa(0, 3));
     }
 }

@@ -16,6 +16,7 @@ import java.util.*;
 import tetrispeli.logiikka.Ajastin;
 import tetrispeli.logiikka.Logiikka;
 import tetrispeli.logiikka.Palikka;
+import tetrispeli.logiikka.PalikkaArpoja;
 import tetrispeli.logiikka.Ruudukko;
 import tetrispeli.logiikka.Suunta;
 import tetrispeli.logiikka.Osa;
@@ -68,8 +69,6 @@ public class Ohjaaja {
      * @param args
      *
      */
-    
-    
     public void uusiPeli() {
         palikat.clear();
         ruudukko.tyhjennaRuudukko();
@@ -111,8 +110,8 @@ public class Ohjaaja {
     public boolean getLoppu() {
         return loppu;
     }
-    public void setLoppu(boolean gameover) {
-        loppu = gameover;
+    public void setLoppu(boolean loppu) {
+        this.loppu = loppu;
     }
     /**
      * Metodi päivittää käyttöliittymän tilanteen.
@@ -133,91 +132,7 @@ public class Ohjaaja {
     public Palikka luoPalikka() {
         palikka.arvoPalikka();
     }
-    /**
-     * Metodi siirtää palikkaa haluttuun suuntaan.
-     *
-     * @param suunta Suunta
-     *
-     * @return false
-     */
-    public boolean siirraPalikka(Suunta suunta) {
-        if (suunta == Suunta.ALAS) {
-            if (ruudukko.siirtyminenOnnistuu(taulukko, aktiivinen.getX(), aktiivinen.getY() + suunta.getSiirto())) {
-                aktiivinen.siirra(suunta);
-                paivitaKayttoliittyma();
-                return true;
-            } else if (ruudukko.siirtyminenOnnistuu(taulukko, aktiivinen.getX() + suunta.getSiirto(), aktiivinen.getY())) {
-                aktiivinen.siirra(suunta);
-                paivitaKayttoliittyma();
-                return true;
-            }
-        }
-        return false;
-    }
-    /**
-     * Metodi vaihtaa aktiivisen palikan.
-     *
-     * @param args
-     */
-    public void vaihdaPalikka() {
-        palikat.add(aktiivinen);
-        ruudukko.paivitaListanPalikat(palikat);
-        poistaakoRiveja();
-        aktiivinen = luoPalikka();
-        if (!ruudukko.siirtyminenOnnistuu(taulukko, aktiivinen.getX(), aktiivinen.getY())) {
-            ajastin.stop();
-            aktiivinen = null;
-            tauko = true;
-            loppu = true;
-            paalla = false;
-            paivitaKayttoliittyma();
-            return;
-        }
-        paivitaKayttoliittyma();
-        ajastin.paivita();
-    }
-    /**
-     * Metodi kääntää aktiivisen palikan.
-     *
-     * @param args
-     */
-    public void kaannaPalikka() {
-        boolean[][] kaannos = aktiivinen.kierraOikealle();
-        if (ruudukko.siirtyminenOnnistuu(kaannos, aktiivinen.getX(), aktiivinen.getY())) {
-            aktiivinen.setRuudukko(kaannos);
-            paivitaKayttoliittyma();
-        }
-    }
-    /**
-     * Metodi siirtää ajastimen aikaa.
-     *
-     * @param args
-     */
-    public void ajastinSiirto() {
-        if (!siirraPalikka(Suunta.ALAS)) {
-            vaihdaPalikka();
-        }
-    }
-    /**
-     * Metodi tarkistaa, onko poistettavia rivejä.
-     *
-     * @param args
-     */
-    private void poistaakoRiveja() {
-        int poistettava = ruudukko.palautaRivi();
-        int poistettuja = 0;
-        while (poistettava != -1) {
-            for (Palikka palikka : palikat) {
-                ruudukko.pudotaRivi(poistettava);
-            }
-            ruudukko.tyhjennaRuudukko();
-            ruudukko.paivitaListanPalikat(palikat);
-            poistettuja++;
-            poistettava = ruudukko.palautaRivi();
-        }
-        poistaTyhjia();
-        paivitaKayttoliittyma();
-    }
+    
     /**
      * Metodi poistaa turhan rivin.
      *
@@ -245,5 +160,4 @@ public class Ohjaaja {
         }
         paivitaKayttoliittyma();
     }
-
 }
