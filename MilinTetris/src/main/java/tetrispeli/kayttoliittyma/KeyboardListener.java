@@ -7,7 +7,6 @@ package tetrispeli.kayttoliittyma;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import tetrispeli.logiikka.Suunta;
 
 /**
  *
@@ -24,13 +23,6 @@ public class KeyboardListener implements KeyListener {
         this.ohjaaja = ohjaaja;
     }
 
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    public void keyReleased(KeyEvent e) {
-
-    }
 
     /**
      * Metodi päättää näppäimistötapahtuman, kun tiettyä näppäintä painetaan.
@@ -38,18 +30,30 @@ public class KeyboardListener implements KeyListener {
      * @param e Keyevent
      *
      */
-    public void keyPressed(KeyEvent e) {
+    @Override
+    public void keyTyped(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            ohjaaja.siirraPalikka(Suunta.VASEN);
+            ohjaaja.getLogiikka().siirraVasemmalle();
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            ohjaaja.siirraPalikka(Suunta.OIKEA);
+            ohjaaja.getLogiikka().siirraOikealle();
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            ohjaaja.siirraPalikka(Suunta.ALAS);
+            ohjaaja.getLogiikka().siirraAlas();
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            ohjaaja.kaannaPalikka();
+            ohjaaja.getLogiikka().kierraOikealle();
         }
+        this.ohjaaja.getAlusta().paivita();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
