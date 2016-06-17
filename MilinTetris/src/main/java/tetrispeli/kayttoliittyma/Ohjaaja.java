@@ -35,11 +35,10 @@ public class Ohjaaja {
     private boolean paalla;
     private boolean tauko;
     private boolean loppu;
+    private KeyboardListener nappainkuuntelija;
 
     public Ohjaaja() {
-        ajastin = new Ajastin(this);
-        logiikka = new Logiikka(this);
-        alusta = new Alusta(this);
+        
     }
 
     public Logiikka getLogiikka() {
@@ -49,6 +48,11 @@ public class Ohjaaja {
     public Alusta getAlusta() {
         return alusta;
     }
+
+    public Ajastin getAjastin() {
+        return ajastin;
+    }
+    
     
     /**
      * Metodi luo uuden pelin.
@@ -57,10 +61,12 @@ public class Ohjaaja {
      *
      */
     public void uusiPeli() {
-        
-        paalla = true;
-        tauko = false;
-        loppu = false;
+        ajastin = new Ajastin(this);
+        logiikka = new Logiikka(this);
+        alusta = new Alusta(this);
+        nappainkuuntelija = new KeyboardListener(this);
+        Kayttoliittyma kali = new Kayttoliittyma(this);
+        ajastin.start();
     }
     
     public boolean getPaalla() {
@@ -72,6 +78,13 @@ public class Ohjaaja {
     public boolean getLoppu() {
         return loppu;
     }
+
+    public KeyboardListener getNappainkuuntelija() {
+        return nappainkuuntelija;
+    }
+    
+    
+    
     public void setLoppu(boolean loppu) {
         this.loppu = loppu;
     }

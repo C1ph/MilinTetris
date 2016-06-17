@@ -19,9 +19,8 @@ import tetrispeli.kayttoliittyma.Ohjaaja;
 public class Main {
     
     public static void main(String[] args) {   
-        Ohjaaja ohjaaja = new Ohjaaja(8, 15);
-        Kayttoliittyma k = new Kayttoliittyma(8, 15, 15, ohjaaja);
+        Ohjaaja ohjaaja = new Ohjaaja();
         ohjaaja.uusiPeli();
-        SwingUtilities.invokeLater(k);     
+        
     }
 }

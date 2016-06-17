@@ -32,7 +32,7 @@ public class Alusta extends JPanel implements Paivitys {
 
     public Alusta(Ohjaaja ohjaaja) {
         this.ohjaaja = ohjaaja;
-        this.setLayout(new FlowLayout(FlowLayout.RIGHT));
+       // this.setLayout(new FlowLayout(FlowLayout.RIGHT));
     }
 
     /**
@@ -42,20 +42,7 @@ public class Alusta extends JPanel implements Paivitys {
      * @param g
      *
      */
-    public void piirraPalikka(Palikka piirrettava, Graphics g) {
-        ArrayList<Osa> ruudukko = piirrettava.getOsat();
-        int i = 0;
-        int j = 0;
-        while (i < ruudukko.size()) {
-            i++;
-        }
-//        while (j < ruudukko.size()) {
-//            j++;
-//            if (ruudukko.get(i)[j] != null) {
-//                g.fill3DRect((piirrettava.getX() + j) * koko, (piirrettava.getY() + i) * koko, koko, koko, true);
-//            }
-//        }
-    }
+    
 
     /**
      * Metodi maalaa palikan.
@@ -66,16 +53,21 @@ public class Alusta extends JPanel implements Paivitys {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (Palikka piirrettava : ohjaaja.getPalikat()) {
-            piirraPalikka(piirrettava, g);
-        }
-        if (ohjaaja.getPalikka() != null) {
-            piirraPalikka(ohjaaja.getPalikka(), g);
-        }
+        
     }
 
     @Override
     public void paivita() {
         this.repaint();
+    }
+    
+    public void piirraLiikuteltavaPalikka(Graphics g) {
+        for (Osa osa : ohjaaja.getLogiikka().getPalikka().getOsat()) {
+            this.piirraOsa(osa, g);
+        }
+    }
+    
+    public void piirraOsa(Osa osa, Graphics g) {
+        g.fillRect(osa.getX() * 10, osa.getY() * 10, 10, 10);
     }
 }

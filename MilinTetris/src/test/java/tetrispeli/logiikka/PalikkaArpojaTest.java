@@ -34,7 +34,7 @@ public class PalikkaArpojaTest {
 
     @Before
     public void setUp() {
-        PalikkaArpoja arpoja = new PalikkaArpoja(0, 0);
+        PalikkaArpoja arpoja = new PalikkaArpoja(10);
     }
 
     @After

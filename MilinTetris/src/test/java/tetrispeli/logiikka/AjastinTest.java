@@ -35,7 +35,7 @@ public class AjastinTest {
     
     @Before
     public void setUp() {
-        ohjaaja = new Ohjaaja(10,10);
+        ohjaaja = new Ohjaaja();
         ajastin = new Ajastin(ohjaaja) {};
     }
     

@@ -26,20 +26,12 @@ import tetrispeli.logiikka.Suunta;
 /**
  * Pelin graafinen käyttöliittymä-luokka.
  */
-public class Kayttoliittyma implements Runnable, Paivitys {
+public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
-    private int korkeus;
-    private int leveys;
-    private int koko;
-    private Alusta alusta;
     private Ohjaaja ohjaaja;
-    private JPanel valikko;
 
-    public Kayttoliittyma(int leveys, int korkeus, int koko, Ohjaaja ohjaaja) {
-        this.leveys = leveys;
-        this.korkeus = korkeus;
-        this.koko = koko;
+    public Kayttoliittyma(Ohjaaja ohjaaja) {
         this.ohjaaja = ohjaaja;
     }
 
@@ -67,10 +59,8 @@ public class Kayttoliittyma implements Runnable, Paivitys {
      *
      */
     public void run() {
-        frame = new JFrame("Tetrispeli");
-        int leveys2 = leveys * koko + (int) (koko * 0.5);
-        int korkeus2 = korkeus * koko + (int) (koko * 1.5) + 29;
-        frame.setPreferredSize(new Dimension(leveys2, korkeus2));
+        frame = new JFrame("Tetrispeli"); 
+        frame.setPreferredSize(new Dimension(1000, 1000));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit(frame.getContentPane());
         frame.pack();
@@ -100,14 +90,10 @@ public class Kayttoliittyma implements Runnable, Paivitys {
      *
      */
     public void luoKomponentit(Container container) {
-        Alusta alusta = new Alusta(ohjaaja);
-        alusta.setBorder(BorderFactory.createEtchedBorder());
-        container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
-        valikko = luoValikko();
-        container.add(luoValikko());
-        container.add(alusta);
-        container.add(alusta);
-        frame.addKeyListener(new KeyboardListener(ohjaaja));
+        //container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+        //container.add(luoValikko());
+        container.add(ohjaaja.getAlusta());
+        frame.addKeyListener(ohjaaja.getNappainkuuntelija());
         frame.setFocusable(true);
     }
 
@@ -117,12 +103,5 @@ public class Kayttoliittyma implements Runnable, Paivitys {
      * @param args
      *
      */
-    public void paivita() {
-        if (!ohjaaja.getPaalla()) {
-            frame.setFocusable(false);
-        } else {
-            frame.setFocusable(true);
-            frame.requestFocusInWindow();
-        }
-    }
+    
 }
