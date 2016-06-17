@@ -45,7 +45,10 @@ public abstract class Palikka {
      */
     
     public void siirraAlas() {
-        this.y += 1;
+        this.y = this.y + 1;
+        for (Osa osa : osat) {
+            osa.siirraAlas();
+        }
     }
     
     public void siirraYlos() {

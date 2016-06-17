@@ -20,8 +20,8 @@ public class SPalikka extends Palikka {
     public SPalikka(int x, int y) {
         super(x, y);
         super.getOsat().add(new Osa(x + 0, y + 0));
-        super.getOsat().add(new Osa(x - 1, y + 0));
-        super.getOsat().add(new Osa(x + 0, y + 1));
-        super.getOsat().add(new Osa(x + 1, y + 1));
+        super.getOsat().add(new Osa(x + 1, y + 0));
+        super.getOsat().add(new Osa(x + 0, y - 1));
+        super.getOsat().add(new Osa(x - 1, y - 1));
     }
 }

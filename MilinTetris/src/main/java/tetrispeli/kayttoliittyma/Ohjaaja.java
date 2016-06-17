@@ -66,6 +66,7 @@ public class Ohjaaja {
         alusta = new Alusta(this);
         nappainkuuntelija = new KeyboardListener(this);
         Kayttoliittyma kali = new Kayttoliittyma(this);
+        kali.run();
         ajastin.start();
     }
     

@@ -53,7 +53,7 @@ public class Alusta extends JPanel implements Paivitys {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
+        this.piirraLiikuteltavaPalikka(g);
     }
 
     @Override

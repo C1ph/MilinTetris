@@ -45,4 +45,8 @@ public class Osa {
     public void setY(int y) {
         this.y = y;
     }
+    
+    public void siirraAlas() {
+        this.y = this.y + 1;
+    }
 }

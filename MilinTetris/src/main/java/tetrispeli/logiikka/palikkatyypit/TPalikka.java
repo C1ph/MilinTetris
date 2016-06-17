@@ -22,6 +22,6 @@ public class TPalikka extends Palikka {
         super.getOsat().add(new Osa(x + 0, y + 0));
         super.getOsat().add(new Osa(x + 1, y + 0));
         super.getOsat().add(new Osa(x + 0, x - 1));
-        super.getOsat().add(new Osa(x + 0, y - 1));
+        super.getOsat().add(new Osa(x + 0, y + 1));
     }  
 }
