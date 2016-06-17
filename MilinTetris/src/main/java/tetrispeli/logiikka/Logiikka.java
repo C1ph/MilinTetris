@@ -66,8 +66,16 @@ public class Logiikka {
     }
 
     /**
-     * Metodi tarkistaa, osuuko osa jonkun pöydän palikan päälle. 
+     * /**
+     * Metodi tarkistaa, osuuko yksi pala päällekkäin sen alapuolella olevien
+     * pohjan palojen kanssa, mikäli palaa siirretään yksi askel haluttuun
+     * suuntaan
+     *
+     * @param pala Pala, jota ollaan liikuttamassa
+     * @return true, jos pala osuu siirrettäessä päällekkäin sen alapuolella
+     * olevien pohjan palojen kanssa, muuten false
      */
+    
     public boolean onkoOsaPaalla(Osa osa) {
         if (ruudukko.onkoKohtaTyhja(osa.getX(), osa.getY())) {
             return false;
@@ -79,7 +87,9 @@ public class Logiikka {
      * Käy läpi tämänhetkisen liikuteltavan palikan osat, ja mikäli jokin osista
      * on päällekkäin jonkun ruudukon osan kanssa palauttaa true. (Käyttää hyväksi metodia onkoOsaPaalla())
      *
-     * @return
+     * @param pala Pala, jota ollaan liikuttamassa
+     * @return true, jos pala osuu siirrettäessä päällekkäin sen alapuolella
+     * olevien pohjan palojen kanssa, muuten false
      */
     public boolean onkoPalikkaPaalla() {
         for (Osa osa : palikka.getOsat()) {
@@ -96,28 +106,29 @@ public class Logiikka {
      * osaksi pohjapala-ArrayListiä. Jos on, palikka liikkuu eteenpäin.
      */
    
+    /**
+     * Metodi liimaa palikan lautaan, jos vastaan tulee alhaalla palikka. 
+     */
     public void liimaaPalikkaLautaan() {
         for (Osa osa : palikka.getOsat()) {
             liimaaOsaLautaan(osa);
         }
     }
     
+    /**
+     * Metodi liimaa osan lautaan.
+     */
     public void liimaaOsaLautaan(Osa osa) {
         ruudukko.getRuudut()[osa.getX()][osa.getY()] = osa;
     }
 
+    /**
+     * Metodi tarkistaa, meneekö osa seinän läpi. Jos menee, estetään kulku
+     * ja palikka jää alustan sisäpuolelle.
+     */
     public boolean meneekoOsaYli(Osa osa) {
         if (osa.getX() < 0 || osa.getY() < 0 || osa.getX() >= ruudukko.getLeveys() || osa.getY() >= ruudukko.getKorkeus()) {
             return true;
-        }
-        return false;
-    }
-    
-    public boolean meneekoPalikkaYli() {
-        for (Osa osa : palikka.getOsat()) {
-            if (meneekoOsaYli(osa)) {
-                return true;
-            }
         }
         return false;
     }
@@ -126,6 +137,14 @@ public class Logiikka {
      * Metodi tarkistaa, meneekö palikka seinän läpi. Jos menee, estetään kulku
      * ja palikka jää alustan sisäpuolelle.
      */
+    public boolean meneekoPalikkaYli() {
+        for (Osa osa : palikka.getOsat()) {
+            if (meneekoOsaYli(osa)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Metodi tarkistaa, osuuko palikka pohjaan. Jos pelikentan alin kerros
@@ -169,39 +188,5 @@ public class Logiikka {
 //        palikka.arvoPalikka();
 //    }
     /**
-     
-
-
-    /**
-     * Metodi tarkistaa, osuuko yksi pala päällekkäin sen alapuolella olevien
-     * pohjan palojen kanssa, mikäli palaa siirretään yksi askel haluttuun
-     * suuntaan
-     *
-     * @param pala Pala, jota ollaan liikuttamassa
-     * @return true, jos pala osuu siirrettäessä päällekkäin sen alapuolella
-     * olevien pohjan palojen kanssa, muuten false
-     */
-   
-
-    /**
-     * Metodi tarkistaa, osuuko yksi pala päällekkäin sen oikealla puolella
-     * olevien pohjan palojen kanssa, mikäli palaa siirretään yksi askel
-     * haluttuun suuntaan
-     *
-     * @param pala Pala, jota ollaan liikuttamassa
-     * @return true, jos pala osuu siirrettäessä päällekkäin sen oikealla
-     * puolella olevien pohjan palojen kanssa, muuten false
-     */
-    
-
-    /**
-     * Metodi tarkistaa, osuuko yksi pala päällekkäin sen vasemmalla puolella
-     * olevien pohjan palojen kanssa, mikäli palaa siirretään yksi askel
-     * haluttuun suuntaan
-     *
-     * @param pala Pala, jota ollaan liikuttamassa
-     * @return true, jos pala osuu siirrettäessä päällekkäin sen vasemmalla
-     * puolella olevien pohjan palojen kanssa, muuten false
-     */
     
 }

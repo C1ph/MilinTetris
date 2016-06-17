@@ -84,8 +84,6 @@ public class Ohjaaja {
         return nappainkuuntelija;
     }
     
-    
-    
     public void setLoppu(boolean loppu) {
         this.loppu = loppu;
     }

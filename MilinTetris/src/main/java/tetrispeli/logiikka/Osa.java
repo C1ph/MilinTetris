@@ -49,4 +49,16 @@ public class Osa {
     public void siirraAlas() {
         this.y = this.y + 1;
     }
+    
+    public void siirraYlos() {
+        this.y = this.y - 1;
+    }
+    
+    public void siirraVasemmalle() {
+        this.x = this.x - 1;
+    }
+    
+    public void siirraOikealle() {
+        this.x = this.x + 1;
+    }
 }

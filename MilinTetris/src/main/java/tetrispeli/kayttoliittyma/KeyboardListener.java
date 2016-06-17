@@ -23,7 +23,6 @@ public class KeyboardListener implements KeyListener {
         this.ohjaaja = ohjaaja;
     }
 
-
     /**
      * Metodi päättää näppäimistötapahtuman, kun tiettyä näppäintä painetaan.
      *
@@ -33,16 +32,16 @@ public class KeyboardListener implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            ohjaaja.getLogiikka().siirraVasemmalle();
+            ohjaaja.getLogiikka().getPalikka().siirraVasemmalle();
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            ohjaaja.getLogiikka().siirraOikealle();
+            ohjaaja.getLogiikka().getPalikka().siirraOikealle();
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            ohjaaja.getLogiikka().siirraAlas();
+            ohjaaja.getLogiikka().getPalikka().siirraAlas();
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            ohjaaja.getLogiikka().kierraOikealle();
+            ohjaaja.getLogiikka().getPalikka().kierraOikealle();
         }
         this.ohjaaja.getAlusta().paivita();
     }

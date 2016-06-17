@@ -52,15 +52,24 @@ public abstract class Palikka {
     }
     
     public void siirraYlos() {
-        this.y -= 1;
+        this.y = this.y - 1;
+        for (Osa osa : osat) {
+            osa.siirraYlos();
+        }
     }
     
     public void siirraVasemmalle() {
-        this.x -= 1;
+        this.x = this.x - 1;
+        for (Osa osa : osat) {
+            osa.siirraVasemmalle();
+        }
     }
     
     public void siirraOikealle() {
-        this.x += 1;
+        this.x = this.x - 1;
+        for (Osa osa : osat) {
+            osa.siirraOikealle();
+        }
     }
     
     /**
