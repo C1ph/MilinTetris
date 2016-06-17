@@ -73,7 +73,6 @@ public class Kayttoliittyma implements Runnable, Paivitys {
         frame.setPreferredSize(new Dimension(leveys2, korkeus2));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit(frame.getContentPane());
-        ohjaaja.lisaaPaivitettava(this);
         frame.pack();
         frame.setResizable(false);
         frame.setVisible(true);
@@ -107,7 +106,6 @@ public class Kayttoliittyma implements Runnable, Paivitys {
         valikko = luoValikko();
         container.add(luoValikko());
         container.add(alusta);
-        ohjaaja.lisaaPaivitettava(alusta);
         container.add(alusta);
         frame.addKeyListener(new KeyboardListener(ohjaaja));
         frame.setFocusable(true);

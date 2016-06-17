@@ -31,23 +31,15 @@ public class Ohjaaja {
 
     private Alusta alusta;
     private Logiikka logiikka;
-    private Palikka palikka;
-    private Ruudukko ruudukko;
-    private ArrayList<Palikka> palikat;
-    private ArrayList<Paivitys> paivitykset;
-    private int leveys;
     private Ajastin ajastin;
-    private boolean[][] taulukko;
     private boolean paalla;
     private boolean tauko;
     private boolean loppu;
 
-    public Ohjaaja(int leveys, int korkeus) {
-        palikat = new ArrayList<Palikka>();
-        paivitykset = new ArrayList<Paivitys>();
-        ruudukko = new Ruudukko(leveys, korkeus);
-        leveys = this.leveys;
-        ajastin.addActionListener(ajastin);
+    public Ohjaaja() {
+        ajastin = new Ajastin(this);
+        logiikka = new Logiikka(this);
+        alusta = new Alusta(this);
     }
 
     public Logiikka getLogiikka() {
@@ -57,11 +49,6 @@ public class Ohjaaja {
     public Alusta getAlusta() {
         return alusta;
     }
-
-    public Palikka getPalikka() {
-        return palikka;
-    }
-    
     
     /**
      * Metodi luo uuden pelin.
@@ -70,35 +57,10 @@ public class Ohjaaja {
      *
      */
     public void uusiPeli() {
-        palikat.clear();
-        ruudukko.tyhjennaRuudukko();
-        palikka = luoPalikka();
+        
         paalla = true;
         tauko = false;
         loppu = false;
-        paivitaKayttoliittyma();
-    }
-
-    /**
-     * Metodi lisää palikan ArrayListiin.
-     *
-     * @param palikka Palikka
-     *
-     */
-    public void lisaaPalikka(Palikka palikka) {
-        palikat.add(palikka);
-    }
-    /**
-     * Metodi lisää päivityksen ArrayListiin.
-     *
-     * @param paivitys Paivitys
-     *
-     */
-    public void lisaaPaivitettava(Paivitys paivitys) {
-        paivitykset.add(paivitys);
-    }
-    public ArrayList<Palikka> getPalikat() {
-        return palikat;
     }
     
     public boolean getPaalla() {
@@ -113,40 +75,7 @@ public class Ohjaaja {
     public void setLoppu(boolean loppu) {
         this.loppu = loppu;
     }
-    /**
-     * Metodi päivittää käyttöliittymän tilanteen.
-     *
-     * @param args
-     */
-    public void paivitaKayttoliittyma() {
-        for (Paivitys paivitettava : paivitykset) {
-            paivitettava.paivita();
-        }
-    }
-    /**
-     * Metodi luo aktiivisen palikan.
-     *
-     * @param args
-     * @return aktiivinen Palikka
-     */
-    public Palikka luoPalikka() {
-        palikka.arvoPalikka();
-    }
-    
-    /**
-     * Metodi poistaa turhan rivin.
-     *
-     * @param args
-     */
-    public void poistaTyhjia() {
-        int i = 0;
-        while (i < palikat.size()) {
-            i++;
-            if (palikat.get(i).onkoTyhja()) {
-                palikat.remove(i);
-            }
-        }
-    }
+
     /**
      * Metodi asettaa ajastimen päälle tai pois.
      *
@@ -158,6 +87,5 @@ public class Ohjaaja {
         } else {
             ajastin.start();
         }
-        paivitaKayttoliittyma();
     }
 }

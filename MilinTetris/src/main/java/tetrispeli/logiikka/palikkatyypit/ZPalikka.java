@@ -19,9 +19,9 @@ public class ZPalikka extends Palikka {
 
     public ZPalikka(int x, int y) {
         super(x, y);
-        super.getOsat().add(new Osa(0, 0));
-        super.getOsat().add(new Osa(1, 0));
-        super.getOsat().add(new Osa(0, 1));
-        super.getOsat().add(new Osa(-1, 1));
+        super.getOsat().add(new Osa(x + 0, y + 0));
+        super.getOsat().add(new Osa(x + 1, y + 0));
+        super.getOsat().add(new Osa(x + 0, y + 1));
+        super.getOsat().add(new Osa(x - 1, y + 1));
     }
 }

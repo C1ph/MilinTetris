@@ -18,24 +18,16 @@ import static tetrispeli.logiikka.Suunta.VASEN;
  */
 public class Logiikka {
 
-    private Logiikka logiikka;
-    private Ajastin ajastin;
-    private Alusta alusta;
     private Palikka palikka;
     private Ohjaaja ohjaaja;
     private PalikkaArpoja arpoja;
     private Ruudukko ruudukko;
-    private ArrayList<Osa> osat;
 
     public Logiikka(Ohjaaja ohjaaja) {
         this.ohjaaja = ohjaaja;
-        this.ruudukko = new Ruudukko(10, 25);
+        this.ruudukko = new Ruudukko(10, 30);
         this.arpoja = new PalikkaArpoja(this.ruudukko.getLeveys());
         this.palikka = arpoja.arvoPalikka();
-        this.osat = new ArrayList<>();
-        this.logiikka = new Logiikka(this);
-        this.alusta = new Alusta(this);
-        this.ajastin = new Ajastin(this);
     }
 
     public Palikka getPalikka() {
@@ -45,24 +37,11 @@ public class Logiikka {
     public void setPalikka(Palikka palikka) {
         this.palikka = palikka;
     }
-    
-    public Ajastin getAjastin() {
-        return ajastin;
-    }
-
-    public Alusta getAlusta() {
-        return alusta;
-    }
-
-    public Logiikka getLogiikka() {
-        return logiikka;
-    }
 
     /**
-     * 
+     *
      * Metodit siirtävät palikkaa haluttuun suuntaan.
      */
-    
     public void siirraAlas() {
         palikka.siirraAlas();
     }
@@ -82,18 +61,29 @@ public class Logiikka {
     /**
      * Metodi kiertää palikkaa asteen verran oikealle.
      */
-    
     public void kierraOikealle() {
         palikka.kierraOikealle();
     }
 
     /**
-     * Metodi tarkistaa, osuuko palikka toisen palikan päälle. Jos osuu, siirretään yksi ylöspäin, 
-     * palikka liimataan paikalle ja liitetään se osaksi pohjapala-ArrayListiä. Jos ei, palikka liikkuu eteenpäin.
+     * Metodi tarkistaa, osuuko osa jonkun pöydän palikan päälle. 
      */
-    public boolean meneekoPaalle(ArrayList<Osa> osat, Osa osa) {
-        for (Osa o : osat) {
-            if (o.getX() == osa.getX() && o.getY() == osa.getY()) {
+    public boolean onkoOsaPaalla(Osa osa) {
+        if (ruudukko.onkoKohtaTyhja(osa.getX(), osa.getY())) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Käy läpi tämänhetkisen liikuteltavan palikan osat, ja mikäli jokin osista
+     * on päällekkäin jonkun ruudukon osan kanssa palauttaa true. (Käyttää hyväksi metodia onkoOsaPaalla())
+     *
+     * @return
+     */
+    public boolean onkoPalikkaPaalla() {
+        for (Osa osa : palikka.getOsat()) {
+            if (onkoOsaPaalla(osa)) {
                 return true;
             }
         }
@@ -101,40 +91,45 @@ public class Logiikka {
     }
 
     /**
-     * Metodi tarkistaa, onko se paikka tyhjä, johon palikka on menossa. Jos ei, siirretään yksi ylöspäin, 
-     * palikka liimataan paikalle ja liitetään se osaksi pohjapala-ArrayListiä. Jos on, palikka liikkuu eteenpäin.
+     * Metodi tarkistaa, onko se paikka tyhjä, johon palikka on menossa. Jos ei,
+     * siirretään yksi ylöspäin, palikka liimataan paikalle ja liitetään se
+     * osaksi pohjapala-ArrayListiä. Jos on, palikka liikkuu eteenpäin.
      */
-    public boolean onkoTyhja() {
-        int rivi = 0;
-        while (rivi < ruudukko.getLeveys()) {
-            rivi++;
-            for (int sarake = 0; sarake < ruudukko.getKorkeus(); sarake++) {
-                if (ruudukko.palaTaulukko()[rivi][sarake] != null) {
-                    return false;
-                }
-            }
+   
+    public void liimaaPalikkaLautaan() {
+        for (Osa osa : palikka.getOsat()) {
+            liimaaOsaLautaan(osa);
         }
-        return true;
+    }
+    
+    public void liimaaOsaLautaan(Osa osa) {
+        ruudukko.getRuudut()[osa.getX()][osa.getY()] = osa;
     }
 
+    public boolean meneekoOsaYli(Osa osa) {
+        if (osa.getX() < 0 || osa.getY() < 0 || osa.getX() >= ruudukko.getLeveys() || osa.getY() >= ruudukko.getKorkeus()) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean meneekoPalikkaYli() {
+        for (Osa osa : palikka.getOsat()) {
+            if (meneekoOsaYli(osa)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
-     * Metodi tarkistaa, meneekö palikka seinän läpi. Jos menee, estetään kulku ja palikka jää alustan sisäpuolelle.
+     * Metodi tarkistaa, meneekö palikka seinän läpi. Jos menee, estetään kulku
+     * ja palikka jää alustan sisäpuolelle.
      */
-//    public boolean meneekoSeinastaLapi(Suunta suunta, int leveys, int korkeus) {
-//        if (suunta == Suunta.ALAS) {
-//            return (this.y > (korkeus - 2));
-//        } else if (suunta == Suunta.OIKEA) {
-//            return (this.x > (leveys - 1));
-//        } else if (suunta == Suunta.VASEN) {
-//            return (this.x < 0);
-//        } else {
-//            return (this.y < 0);
-//        }
-//    }
 
     /**
-     * Metodi tarkistaa, osuuko palikka pohjaan. Jos pelikentan alin kerros tayttyy paloista, metodi poistaa alimman
-     * palakerroksen.
+     * Metodi tarkistaa, osuuko palikka pohjaan. Jos pelikentan alin kerros
+     * tayttyy paloista, metodi poistaa alimman palakerroksen.
      */
 //    public void pelinLoppu() {
 //        if (osuukoPohjaan()) {
@@ -147,11 +142,9 @@ public class Logiikka {
 //            alinRiviPois();
 //        }
 //    }
-    
     /**
-     * Metodi tarkistaa,mahtuuko pohjalle enempää palikoita. 
-     * Jos pelikentan alin kerros tayttyy paloista, metodi poistaa alimman
-     * palakerroksen.
+     * Metodi tarkistaa,mahtuuko pohjalle enempää palikoita. Jos pelikentan alin
+     * kerros tayttyy paloista, metodi poistaa alimman palakerroksen.
      */
 //    public void eiMahduEnempaa() {
 //        for (int i = 0; i < this.leveys; i++) {
@@ -172,52 +165,12 @@ public class Logiikka {
 //     * Metodi luo peliin uuden palikan, ja jos uusi palikka asettuu pohjan
 //     * palojen paalle, estaa palikan liikkumisen alaspain
 //     */
-
 //    public void luoUusiPalikka() {
 //        palikka.arvoPalikka();
 //    }
-
     /**
-     * Metodi kertoo, osuuko pelin palikka siirrettäessä pohjan paloihin
-     *
-     * @param suunta suunta, johon palikkaa halutaan siirtää
-     * @return true, jos pelin palikka osuu siirrettäessä pohjan paloihin,
-     * muuten false
-     */
-    public boolean osuukoPohjanPaloihin(Suunta suunta) {
-        for (Osa o : this.palikka.getOsat()) {
-            if (osuukoPohjanPaloihin(o, suunta)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
+     
 
-    /**
-     * Metodi tarkistaa, osuuko yksi pala päällekäin pohjan palojen kanssa,
-     * mikäli palaa siirretään yksi askel haluttuun suuntaan
-     *
-     * @param pala Pala, jota ollaan liikuttamassa
-     * @param suunta Suunta, johon palaa ollaan liikuttamassa
-     * @return true, jos pala osuu siirrettäessä päällekkäin pohjan palojen
-     * kanssa, muuten false
-     */
-    public boolean osuukoPohjanPaloihin(Osa osa, Suunta suunta) {
-        if (this.osat == null) {
-            return false;
-        } else if (this.osat.isEmpty()) {
-            return false;
-        } else if (suunta == ALAS) {
-            return osuukoPaloihinAlhaalla(osa);
-        } else if (suunta == OIKEA) {
-            return osuukoPaloihinOikealla(osa);
-        } else if (suunta == VASEN) {
-            return osuukoPaloihinVasemmalla(osa);
-        }
-        return false;
-    }
 
     /**
      * Metodi tarkistaa, osuuko yksi pala päällekkäin sen alapuolella olevien
@@ -228,14 +181,7 @@ public class Logiikka {
      * @return true, jos pala osuu siirrettäessä päällekkäin sen alapuolella
      * olevien pohjan palojen kanssa, muuten false
      */
-    public boolean osuukoPaloihinAlhaalla(Osa osa) {
-        for (Osa o : this.osat) {
-            if ((o.getY() == osa.getY() + 1) && (osa.getX() == o.getX())) {
-                return true;
-            }
-        }
-        return false;
-    }
+   
 
     /**
      * Metodi tarkistaa, osuuko yksi pala päällekkäin sen oikealla puolella
@@ -246,14 +192,7 @@ public class Logiikka {
      * @return true, jos pala osuu siirrettäessä päällekkäin sen oikealla
      * puolella olevien pohjan palojen kanssa, muuten false
      */
-    public boolean osuukoPaloihinOikealla(Osa osa) {
-        for (Osa o : this.osat) {
-            if ((o.getY() == osa.getY()) && (osa.getX() + 1 == o.getX())) {
-                return true;
-            }
-        }
-        return false;
-    }
+    
 
     /**
      * Metodi tarkistaa, osuuko yksi pala päällekkäin sen vasemmalla puolella
@@ -264,12 +203,5 @@ public class Logiikka {
      * @return true, jos pala osuu siirrettäessä päällekkäin sen vasemmalla
      * puolella olevien pohjan palojen kanssa, muuten false
      */
-    public boolean osuukoPaloihinVasemmalla(Osa osa) {
-        for (Osa o : this.osat) {
-            if ((o.getY() == osa.getY()) && (osa.getX() - 1 == o.getX())) {
-                return true;
-            }
-        }
-        return false;
-    }
+    
 }

@@ -16,14 +16,14 @@ import java.util.ArrayList;
  */
 public class Ruudukko {
 
-    private boolean[][] ruudukko;
+    private Osa[][] ruudut;
     private int leveys;
     private int korkeus;
 
     public Ruudukko(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;
-        this.ruudukko = new boolean[korkeus][leveys];
+        this.ruudut = new Osa[leveys][korkeus];
     }
 
     public int getKorkeus() {
@@ -34,64 +34,19 @@ public class Ruudukko {
         return leveys;
     }
 
-    public boolean[][] getRuudukko() {
-        return ruudukko;
+    public Osa[][] getRuudut() {
+        return ruudut;
     }
 
-    public void setRuudukko(boolean[][] ruudukko) {
-        this.ruudukko = ruudukko;
+    public void setRuudut(Osa[][] ruudut) {
+        this.ruudut = ruudut;
     }
 
-    public void tyhjennaRuudukko() {
-        ruudukko = new boolean[korkeus][leveys];
+    public void tyhjennaRuudut() {
+        ruudut = new Osa[leveys][korkeus];
     }
 
-    public boolean siirtyminenOnnistuu(boolean[][] ruudukko, int x, int y) {
-        int i = 0;
-        int j = 0;
-        if (!onkoSisalla(ruudukko, x, y)) {
-            return false;
-        }
-        while (i < ruudukko.length) {
-            i++;
-            while (j < ruudukko.length) {
-                j++;
-                if (ruudukko[i][j] && ruudukko[y + i][x + j]) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public void pudotaRivi(int riviruudukossa) {
-        int i = riviruudukossa - 1;
-        while (i >= 0) {
-            i--;
-            int j = 0;
-            while (j < ruudukko.length) {
-                j++;
-                ruudukko[i + 1][j] = ruudukko[i][j];
-            }
-        }
-        while (i < ruudukko.length) {
-            i++;
-            ruudukko[0][i] = false;
-        }
-    }
-
-    public boolean onkoPalikassaPaloja() {
-        int rivi = 0;
-        int sarake = 0;
-        while (rivi < ruudukko.length) {
-            rivi++;
-            while (sarake < ruudukko.length) {
-                sarake++;
-            }
-            if (ruudukko[rivi][sarake]) {
-                return false;
-            }
-        }
-        return true;
+    public boolean onkoKohtaTyhja(int x, int y) {
+        return ruudut[x][y] == null;
     }
 }
