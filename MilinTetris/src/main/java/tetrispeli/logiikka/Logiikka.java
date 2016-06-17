@@ -187,6 +187,6 @@ public class Logiikka {
 //    public void luoUusiPalikka() {
 //        palikka.arvoPalikka();
 //    }
-    /**
+    //**
     
 }
