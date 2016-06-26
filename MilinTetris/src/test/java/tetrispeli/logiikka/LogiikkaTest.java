@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import tetrispeli.kayttoliittyma.Ohjaaja;
 
 /**
  *
@@ -18,7 +19,12 @@ import static org.junit.Assert.*;
  */
 public class LogiikkaTest {
     
+    Palikka palikka;
+    Ohjaaja ohjaaja;
+    Logiikka logiikka;
+    
     public LogiikkaTest() {
+        
     }
     
     @BeforeClass
@@ -31,15 +37,11 @@ public class LogiikkaTest {
     
     @Before
     public void setUp() {
+        palikka = new Palikka(0, 0) {};
     }
     
     @After
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

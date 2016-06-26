@@ -20,6 +20,8 @@ import tetrispeli.logiikka.palikkatyypit.TPalikka;
 public class PalikkaArpojaTest {
 
     PalikkaArpoja arpoja;
+    Palikka palikka;
+    Logiikka logiikka;
 
     public PalikkaArpojaTest() {
     }
@@ -35,6 +37,7 @@ public class PalikkaArpojaTest {
     @Before
     public void setUp() {
         PalikkaArpoja arpoja = new PalikkaArpoja(10);
+        Palikka p = new Palikka(0, 0) {};
     }
 
     @After
@@ -42,15 +45,9 @@ public class PalikkaArpojaTest {
     }
 
 //    @Test
-//    public void TPalikanArvontaOikein() {
-//        TPalikka t = new TPalikka(0, 0);
+//    public void PalikanArvontaOikein() {
+//        PalikkaArpoja arpoja = new PalikkaArpoja(0);
 //        Palikka arvottu = arpoja.arvoPalikka();
-//        assertEquals(t, arvottu);
-//    }
-    
-//    @Test
-//    public void arvontaToimii() {
-//        PalikkaArpoja arpoja = new PalikkaArpoja(0, 0);
-//        Palikka numero = arpoja.arvoPalikka();
+//        
 //    }
 }

@@ -18,6 +18,7 @@ import tetrispeli.logiikka.Ajastin;
 import tetrispeli.logiikka.Palikka;
 import tetrispeli.logiikka.Ruudukko;
 import tetrispeli.logiikka.Suunta;
+import tetrispeli.kayttoliittyma.KeyboardListener;
 
 /**
  *
@@ -30,6 +31,7 @@ public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     private Ohjaaja ohjaaja;
+    private KeyboardListener kuuntelija;
 
     public Kayttoliittyma(Ohjaaja ohjaaja) {
         this.ohjaaja = ohjaaja;
@@ -60,12 +62,13 @@ public class Kayttoliittyma implements Runnable {
      */
     public void run() {
         frame = new JFrame("Tetrispeli"); 
-        frame.setPreferredSize(new Dimension(1000, 1000));
+        frame.setPreferredSize(new Dimension(500, 500));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit(frame.getContentPane());
         frame.pack();
         frame.setResizable(false);
         frame.setVisible(true);
+        frame.addKeyListener(kuuntelija);
     }
 
     /**
@@ -96,12 +99,5 @@ public class Kayttoliittyma implements Runnable {
         frame.addKeyListener(ohjaaja.getNappainkuuntelija());
         frame.setFocusable(true);
     }
-
-    /**
-     * Metodi päivittää ohjaajan tilan ikkunassa.
-     *
-     * @param args
-     *
-     */
     
 }

@@ -33,6 +33,14 @@ public abstract class Palikka {
 
     public int getY() {
         return y;
+    }   
+    
+    public void setX(int x) {
+        this.x = x;
+    }
+    
+    public void setY(int y) {
+        this.y = y;
     }
     
     public ArrayList<Osa> getOsat() {
@@ -45,14 +53,14 @@ public abstract class Palikka {
      */
     
     public void siirraAlas() {
-        this.y = this.y + 1;
+        this.y = this.y - 1;
         for (Osa osa : osat) {
             osa.siirraAlas();
         }
     }
     
     public void siirraYlos() {
-        this.y = this.y - 1;
+        this.y = this.y + 1;
         for (Osa osa : osat) {
             osa.siirraYlos();
         }
@@ -66,7 +74,7 @@ public abstract class Palikka {
     }
     
     public void siirraOikealle() {
-        this.x = this.x - 1;
+        this.x = this.x + 1;
         for (Osa osa : osat) {
             osa.siirraOikealle();
         }
@@ -91,4 +99,5 @@ public abstract class Palikka {
             kierraOikealle();
         }
     }
+
 }

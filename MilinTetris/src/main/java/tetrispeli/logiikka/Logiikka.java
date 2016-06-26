@@ -22,6 +22,8 @@ public class Logiikka {
     private Ohjaaja ohjaaja;
     private PalikkaArpoja arpoja;
     private Ruudukko ruudukko;
+    private Ajastin ajastin;
+    private boolean peliLoppu;
 
     public Logiikka(Ohjaaja ohjaaja) {
         this.ohjaaja = ohjaaja;
@@ -147,46 +149,19 @@ public class Logiikka {
     }
 
     /**
-     * Metodi tarkistaa, osuuko palikka pohjaan. Jos pelikentan alin kerros
-     * tayttyy paloista, metodi poistaa alimman palakerroksen.
+     * Metodi lopettaa pelin.
      */
-//    public void pelinLoppu() {
-//        if (osuukoPohjaan()) {
-//            for (Osa o : palikka.getOsat()) {
-//                this.osat.add(o);
-//            }
-//            luoUusiPalikka();
-//        }
-//        while (eiMahduEnempaa()) {
-//            alinRiviPois();
-//        }
-//    }
+    public void lopeta() {
+        this.peliLoppu = true;
+        ajastin.stop();
+    }
+
     /**
-     * Metodi tarkistaa,mahtuuko pohjalle enempää palikoita. Jos pelikentan alin
-     * kerros tayttyy paloista, metodi poistaa alimman palakerroksen.
+     * Metodi luo peliin uuden palikan, ja jos uusi palikka asettuu pohjan
+     * palojen paalle, estaa palikan liikkumisen alaspain
      */
-//    public void eiMahduEnempaa() {
-//        for (int i = 0; i < this.leveys; i++) {
-//            boolean mahtuu = false;
-//            for (Osa o : this.osat) {
-//                if (o.getX() == i & o.getY() == (this.korkeus / 2)) {
-//                    mahtuu = true;
-//                }
-//            }
-//            if (!mahtuu) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
-//
-//    /**
-//     * Metodi luo peliin uuden palikan, ja jos uusi palikka asettuu pohjan
-//     * palojen paalle, estaa palikan liikkumisen alaspain
-//     */
-//    public void luoUusiPalikka() {
-//        palikka.arvoPalikka();
-//    }
-    //**
+    public void luoUusiPalikka() {
+        arpoja.arvoPalikka();
+    }
     
 }

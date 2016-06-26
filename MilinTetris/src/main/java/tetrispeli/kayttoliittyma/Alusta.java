@@ -32,21 +32,12 @@ public class Alusta extends JPanel implements Paivitys {
 
     public Alusta(Ohjaaja ohjaaja) {
         this.ohjaaja = ohjaaja;
-       // this.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        // this.setLayout(new FlowLayout(FlowLayout.RIGHT));
     }
 
     /**
-     * Metodi piirtää palikan.
-     *
-     * @param piirrettava
-     * @param g
-     *
-     */
-    
-
-    /**
      * Metodi maalaa palikan.
-     * 
+     *
      * @param g maalattava komponentti
      *
      */
@@ -60,13 +51,27 @@ public class Alusta extends JPanel implements Paivitys {
     public void paivita() {
         this.repaint();
     }
-    
+
+    /**
+     * Metodi piirtää palikan.
+     *
+     * @param piirrettava
+     * @param g
+     *
+     */
     public void piirraLiikuteltavaPalikka(Graphics g) {
         for (Osa osa : ohjaaja.getLogiikka().getPalikka().getOsat()) {
             this.piirraOsa(osa, g);
         }
     }
-    
+
+        /**
+     * Metodi piirtää palikan osan.
+     *
+     * @param osa
+     * @param g
+     *
+     */
     public void piirraOsa(Osa osa, Graphics g) {
         g.fillRect(osa.getX() * 10, osa.getY() * 10, 10, 10);
     }

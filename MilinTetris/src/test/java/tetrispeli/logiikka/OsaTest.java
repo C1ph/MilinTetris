@@ -5,6 +5,7 @@
  */
 package tetrispeli.logiikka;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,6 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tetrispeli.logiikka.Palikka;
+import tetrispeli.logiikka.palikkatyypit.Suorapalikka;
 
 /**
  *
@@ -44,4 +46,49 @@ public class OsaTest {
     public void tearDown() {
     }
 
+    @Test
+    public void xKoordinaatinAsetusToimii(){
+        palikka = new Palikka(0,0) {};
+        palikka.setX(10);
+        assertEquals(10, palikka.getX());
+    }
+    
+    @Test
+    public void yKoordinaatinAsetusToimii(){
+        palikka = new Palikka(0,0) {};
+        palikka.setY(10);
+        assertEquals(10, palikka.getY());
+    }
+    
+    @Test
+    public void siirraAlasToimii() {
+        palikka = new Palikka(0, 0) {};
+        palikka.siirraAlas();
+        assertEquals(0, palikka.getX());
+        assertEquals(-1, palikka.getY());
+    }
+    
+    @Test
+    public void siirraYlosToimii() {
+        palikka = new Palikka(0, 0) {};
+        palikka.siirraYlos();
+        assertEquals(0, palikka.getX());
+        assertEquals(1, palikka.getY());
+    }
+    
+    @Test
+    public void siirraOikealleToimii() {
+        palikka = new Palikka(0, 0) {};
+        palikka.siirraOikealle();
+        assertEquals(1, palikka.getX());
+        assertEquals(0, palikka.getY());
+    }
+    
+    @Test
+    public void siirraVasemmalleToimii() {
+        palikka = new Palikka(0, 0) {};
+        palikka.siirraVasemmalle();
+        assertEquals(-1, palikka.getX());
+        assertEquals(0, palikka.getY());
+    }
 }

@@ -47,19 +47,9 @@ public class RuudukkoTest {
     @After
     public void tearDown() {
     }
-
-    @Test
-    public void uusiRuudukkoOnTyhja() {
-     //   assertEquals(-1, ruudukko.palautaRivi());
-    }
-
-    @Test
-    public void palautusToimii() {
-       // assertEquals(ruudukko.palautaRivi(), -1);
-    }
     
     @Test
-    public void ruudukkoLuodaanOikein(){
+    public void ruudukkoLuodaanOikein() {
         assertTrue(ruudukko != null);
     }
 
@@ -74,17 +64,12 @@ public class RuudukkoTest {
         ruudukko = new Ruudukko(4, 6);
         assertEquals(ruudukko.getKorkeus(), 6);
     }
-    
+
     @Test
-    public void tyhjennaMetodiToimii(){
+    public void tyhjennaMetodiToimii() {
         ArrayList<Palikka> palikat = new ArrayList<>();
-        palikat.add(new Neliopalikka(0,0));
-        //ruudukko.tyhjennaRuudukko();
-        //assertEquals(-1, ruudukko.palautaRivi());
+        palikat.add(new Neliopalikka(2, 3));
+        ruudukko.tyhjennaRuudut();
+        assertEquals(1, palikat.size());
     }
-    
-    @Test
-    public void riviPalautetaanOikein(){
-        //assertEquals(-1, ruudukko.palautaRivi());
-    }   
 }

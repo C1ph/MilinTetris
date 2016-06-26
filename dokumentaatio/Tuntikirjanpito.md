@@ -19,3 +19,10 @@
 | 12.06.2016 | 3 h | Logiikan refraktorointia sekä single responsibility principlen toteutusta lisää :D |
 | 14.06.2016 | 3 h | Mm. kuuntelijoiden toiminnallisuuden kehittelyä sekä testien refraktorointia |
 | 16.06.2016 | 8 h | Palikkatyyppien toiminnallisuuden päivittäminen booleanista matriisitaulukkoon perustuvaksi, luokka- ja sekvenssikaaviot, koodikatselmoinnin aloitus |
+| 18.06.2016 | 2 h | Koodikatselmointiin liittyvän projektin arviointia, testien päivitystä, ajastimelle lisää metodeita |
+| 19.06.2016 | 2 h | Koodikatselmointi valmiina, toiminnallisuuden korjailua (käyttöliittymä tunnistamaan näppäimistön kuuntelijan) |
+| 21.6.2016 | 2 h | Lisää käyttöliittymän kehittelyä, mm. ikkunan ja palikoiden koon muuttelua, palikoiden koordinaattien korjaus |
+| 22.6.2016 | 2 h | Metodien luontia logiikkaan putoavaa palikkaa varten: pysäytys, testien lisäystä |
+| 23.6.2016 | 2 h | Demotehtävää vastaava koodikatselmointi, javadocien ylläpito, checkstyle ja pit kuntoon |
+| 25.6.2016 | 2 h | Toiminnallisuusmetodit kuntoon logiikassa, lisää testejä, jar-tiedoston luonti, testausdokumentaation kirjoitus |
+| 26.6.2016 | 3 h | Viimeistelyä, rakennekuvaus ja käyttöohjeet |
